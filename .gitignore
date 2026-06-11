@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# shared data / outputs (plan §5.0: per-method envs + shared layers at repo root)
+/data/
+/outputs/
+vae/outputs/

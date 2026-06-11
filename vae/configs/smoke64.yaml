@@ -1,0 +1,12 @@
+# Smoke test (plan week 1): 64px, small data, short run.
+# Goal: confirm the pipeline runs end-to-end and smile edits do *something*
+# visible on object images — not quality.
+resolution: 64
+z_dim: 256
+batch_size: 64
+steps: 4000
+data_dirs:
+  - ../data/raw/celeba/smile
+  - ../data/raw/celeba/neutral
+  - ../data/raw/objects_smoke
+out_dir: outputs/smoke64

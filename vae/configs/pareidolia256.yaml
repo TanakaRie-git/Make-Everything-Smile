@@ -1,0 +1,12 @@
+# +Pareidolia condition (plan §2.3): Baseline data + Faces in Things (happy).
+# Identical to baseline256.yaml except for the extra data dir.
+resolution: 256
+z_dim: 512
+batch_size: 16
+steps: 60000
+data_dirs:
+  - ../data/raw/celeba_hq/smile
+  - ../data/raw/celeba_hq/neutral
+  - ../data/processed/objects
+  - ../data/raw/faces_in_things/happy
+out_dir: outputs/pareidolia256
