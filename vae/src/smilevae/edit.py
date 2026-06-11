@@ -69,7 +69,8 @@ def main() -> None:
     device = "cuda" if torch.cuda.is_available() else "cpu"
     state = torch.load(args.ckpt, map_location=device, weights_only=False)
     cfg = state["cfg"]
-    model = VAEGAN(cfg["resolution"], cfg["z_dim"], cfg["base_channels"], cfg["max_channels"]).to(device)
+    model = VAEGAN(cfg["resolution"], cfg["z_dim"], cfg["base_channels"], cfg["max_channels"],
+                   cfg.get("latent_size", 0)).to(device)
     model.load_state_dict(state["model"])
     model.eval()
 

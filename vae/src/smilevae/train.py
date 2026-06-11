@@ -25,6 +25,7 @@ from .models import VAEGAN, reparameterize
 DEFAULTS = {
     "resolution": 64,
     "z_dim": 256,
+    "latent_size": 0,   # 0 = global vector latent; >=2 = spatial latent map
     "base_channels": 64,
     "max_channels": 512,
     "batch_size": 64,
@@ -77,7 +78,8 @@ def train(cfg: dict) -> None:
         persistent_workers=cfg["num_workers"] > 0,
     )
 
-    model = VAEGAN(cfg["resolution"], cfg["z_dim"], cfg["base_channels"], cfg["max_channels"]).to(device)
+    model = VAEGAN(cfg["resolution"], cfg["z_dim"], cfg["base_channels"], cfg["max_channels"],
+                   cfg["latent_size"]).to(device)
     opt_eg = torch.optim.Adam(
         list(model.encoder.parameters()) + list(model.decoder.parameters()),
         lr=cfg["lr"], betas=(0.5, 0.999),
@@ -85,7 +87,7 @@ def train(cfg: dict) -> None:
     opt_d = torch.optim.Adam(model.discriminator.parameters(), lr=cfg["lr_d"], betas=(0.5, 0.999))
 
     fixed = torch.stack([dataset[i] for i in range(0, len(dataset), max(1, len(dataset) // 16))][:16]).to(device)
-    fixed_z = torch.randn(16, cfg["z_dim"], device=device)
+    fixed_z = model.sample_prior(16, device)
 
     step, t0 = 0, time.time()
     while step < cfg["steps"]:
@@ -98,7 +100,7 @@ def train(cfg: dict) -> None:
             with torch.no_grad():
                 mu, logvar = model.encoder(x)
                 x_rec = model.decoder(reparameterize(mu, logvar))
-                x_pri = model.decoder(torch.randn(x.size(0), cfg["z_dim"], device=device))
+                x_pri = model.decoder(model.sample_prior(x.size(0), device))
             d_real, _ = model.discriminator(x)
             d_rec, _ = model.discriminator(x_rec)
             d_pri, _ = model.discriminator(x_pri)
@@ -110,13 +112,13 @@ def train(cfg: dict) -> None:
             # --- encoder + decoder ---
             mu, logvar = model.encoder(x)
             x_rec = model.decoder(reparameterize(mu, logvar))
-            x_pri = model.decoder(torch.randn(x.size(0), cfg["z_dim"], device=device))
+            x_pri = model.decoder(model.sample_prior(x.size(0), device))
             with torch.no_grad():
                 _, f_real = model.discriminator(x)
             d_rec, f_rec = model.discriminator(x_rec)
             d_pri, _ = model.discriminator(x_pri)
 
-            loss_kl = (-0.5 * (1 + logvar - mu.pow(2) - logvar.exp()).sum(1)).mean() / cfg["z_dim"]
+            loss_kl = (-0.5 * (1 + logvar - mu.pow(2) - logvar.exp())).flatten(1).sum(1).mean() / mu[0].numel()
             loss_feat = F.mse_loss(f_rec, f_real)
             loss_pix = F.l1_loss(x_rec, x)
             loss_adv = 0.5 * (d_loss_fn(d_rec, 1.0) + d_loss_fn(d_pri, 1.0))

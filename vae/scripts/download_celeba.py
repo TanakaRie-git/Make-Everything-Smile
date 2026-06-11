@@ -20,15 +20,18 @@ from tqdm import tqdm
 
 
 def iter_labeled(source: str):
+    """Yield (image, smiling, male). Gender lets the direction computation
+    average male/female smile directions, mitigating gender entanglement."""
     if source == "celeba":
         ds = load_dataset("flwrlabs/celeba", "img_align+identity+attr",
                           split="train", streaming=True)
         for row in ds:
-            yield row["image"], bool(row["Smiling"])
+            yield row["image"], bool(row["Smiling"]), bool(row["Male"])
     elif source == "celeba-hq":
         ds = load_dataset("Ryan-sjtu/celebahq-caption", split="train", streaming=True)
         for row in ds:
-            yield row["image"], "smil" in row["text"].lower()
+            text = row["text"].lower()
+            yield row["image"], "smil" in text, "she" not in text and "woman" not in text
     else:
         raise ValueError(source)
 
@@ -43,13 +46,13 @@ def main() -> None:
     args = parser.parse_args()
 
     out = Path(args.out)
-    counts = {"smile": 0, "neutral": 0}
+    counts = {f"{s}_{g}": 0 for s in ("smile", "neutral") for g in ("male", "female")}
     for name in counts:
         (out / name).mkdir(parents=True, exist_ok=True)
 
-    bar = tqdm(total=2 * args.n_per_class, desc=f"{args.source} -> {out}")
-    for i, (img, smiling) in enumerate(iter_labeled(args.source)):
-        cls = "smile" if smiling else "neutral"
+    bar = tqdm(total=4 * args.n_per_class, desc=f"{args.source} -> {out}")
+    for i, (img, smiling, male) in enumerate(iter_labeled(args.source)):
+        cls = f"{'smile' if smiling else 'neutral'}_{'male' if male else 'female'}"
         if counts[cls] >= args.n_per_class:
             continue
         if args.max_side and max(img.size) > args.max_side:
