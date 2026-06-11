@@ -43,18 +43,22 @@ def main() -> None:
     from nltk.corpus import wordnet as wn
 
     out = Path(args.out)
-    cache = out / "_tiny-imagenet-200"
     out.mkdir(parents=True, exist_ok=True)
+    # keep the raw zip/extract OUTSIDE the output dir: training globs the output
+    # dir recursively, so a cache inside it would leak all 200 classes
+    # (animals included) into the training set
+    cache_root = out.parent / "_cache"
+    cache = cache_root / "tiny-imagenet-200"
 
     if not cache.exists():
-        zip_path = out / "tiny-imagenet-200.zip"
+        cache_root.mkdir(parents=True, exist_ok=True)
+        zip_path = cache_root / "tiny-imagenet-200.zip"
         if not zip_path.exists():
             print(f"downloading {URL} (~240MB)...")
             urllib.request.urlretrieve(URL, zip_path)
         print("extracting...")
         with zipfile.ZipFile(zip_path) as zf:
-            zf.extractall(out)
-        (out / "tiny-imagenet-200").rename(cache)
+            zf.extractall(cache_root)
 
     wnids = (cache / "wnids.txt").read_text().split()
     nonliving = [w for w in wnids if is_nonliving(w)]

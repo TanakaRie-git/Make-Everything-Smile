@@ -29,6 +29,8 @@ DEFAULTS = {
     "max_channels": 512,
     "batch_size": 64,
     "lr": 2e-4,
+    "lr_d": 1e-4,         # slower D so it doesn't overpower E+G late in training
+    "label_smooth": 0.9,  # real-label target in the D step
     "beta_kl": 1.0,
     "gamma_feat": 1.0,
     "lambda_pixel": 0.5,
@@ -51,9 +53,8 @@ def load_config(path: str) -> dict:
     return cfg
 
 
-def d_loss_fn(logits: torch.Tensor, real: bool) -> torch.Tensor:
-    target = torch.ones_like(logits) if real else torch.zeros_like(logits)
-    return F.binary_cross_entropy_with_logits(logits, target)
+def d_loss_fn(logits: torch.Tensor, target_value: float) -> torch.Tensor:
+    return F.binary_cross_entropy_with_logits(logits, torch.full_like(logits, target_value))
 
 
 def train(cfg: dict) -> None:
@@ -81,7 +82,7 @@ def train(cfg: dict) -> None:
         list(model.encoder.parameters()) + list(model.decoder.parameters()),
         lr=cfg["lr"], betas=(0.5, 0.999),
     )
-    opt_d = torch.optim.Adam(model.discriminator.parameters(), lr=cfg["lr"], betas=(0.5, 0.999))
+    opt_d = torch.optim.Adam(model.discriminator.parameters(), lr=cfg["lr_d"], betas=(0.5, 0.999))
 
     fixed = torch.stack([dataset[i] for i in range(0, len(dataset), max(1, len(dataset) // 16))][:16]).to(device)
     fixed_z = torch.randn(16, cfg["z_dim"], device=device)
@@ -101,7 +102,7 @@ def train(cfg: dict) -> None:
             d_real, _ = model.discriminator(x)
             d_rec, _ = model.discriminator(x_rec)
             d_pri, _ = model.discriminator(x_pri)
-            loss_d = d_loss_fn(d_real, True) + 0.5 * (d_loss_fn(d_rec, False) + d_loss_fn(d_pri, False))
+            loss_d = d_loss_fn(d_real, cfg["label_smooth"]) + 0.5 * (d_loss_fn(d_rec, 0.0) + d_loss_fn(d_pri, 0.0))
             opt_d.zero_grad(set_to_none=True)
             loss_d.backward()
             opt_d.step()
@@ -118,7 +119,7 @@ def train(cfg: dict) -> None:
             loss_kl = (-0.5 * (1 + logvar - mu.pow(2) - logvar.exp()).sum(1)).mean() / cfg["z_dim"]
             loss_feat = F.mse_loss(f_rec, f_real)
             loss_pix = F.l1_loss(x_rec, x)
-            loss_adv = 0.5 * (d_loss_fn(d_rec, True) + d_loss_fn(d_pri, True))
+            loss_adv = 0.5 * (d_loss_fn(d_rec, 1.0) + d_loss_fn(d_pri, 1.0))
             loss_eg = (
                 cfg["beta_kl"] * loss_kl
                 + cfg["gamma_feat"] * loss_feat
