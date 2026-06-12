@@ -4,11 +4,21 @@ For each input image: z = mu(E(x)); output D(z + alpha * proj_std * direction).
 Saves a labeled contact sheet (rows = inputs; columns = input | recon |
 weak | mid | strong), upscaled so low-resolution runs stay readable.
 
+--mask restricts WHERE the direction is applied on the spatial latent grid
+(spatial-latent checkpoints only), so only facial features — not the whole
+face — possess the object:
+    none        full direction map (default)
+    eyes-mouth  geometric mask over the eye and mouth rows of the aligned
+                CelebA layout
+    top:<frac>  data-driven: keep the <frac> of latent cells with the largest
+                direction magnitude (the smile signal concentrates at the
+                eyes/mouth on its own), e.g. top:0.25
+
 Usage:
-    python -m smilevae.edit --ckpt outputs/smoke64/ckpt/last.pt \
-        --direction outputs/smoke64/smile_direction.pt \
-        --input-dir ../data/raw/objects_smoke --out-dir outputs/smoke64/edits \
-        --strengths 1 2 3
+    python -m smilevae.edit --ckpt outputs/hq512/ckpt/last.pt \
+        --direction outputs/hq512/smile_direction.pt \
+        --input-dir ../data/raw/objects_hq/golf_ball --out-dir outputs/hq512/edits \
+        --strengths 4 8 12 --mask eyes-mouth
 """
 
 import argparse
@@ -19,6 +29,33 @@ from PIL import Image, ImageDraw
 
 from .data import FlatImageDataset
 from .models import VAEGAN
+
+# fraction of the latent grid covered by eyes / mouth in aligned CelebA(-HQ)
+EYE_ROWS = (0.32, 0.55)
+MOUTH_ROWS = (0.58, 0.85)
+FACE_COLS = (0.22, 0.78)
+
+
+def build_mask(direction: torch.Tensor, spec: str) -> torch.Tensor:
+    """Return a (1, S, S) mask for a spatial direction map of shape (C, S, S)."""
+    if spec == "none":
+        return torch.ones(1, *direction.shape[1:], device=direction.device)
+    if direction.dim() != 3:
+        raise SystemExit(f"--mask {spec} requires a spatial latent, got shape {tuple(direction.shape)}")
+    size = direction.shape[-1]
+    if spec == "eyes-mouth":
+        mask = torch.zeros(1, size, size, device=direction.device)
+        c0, c1 = (round(f * size) for f in FACE_COLS)
+        for r0, r1 in (EYE_ROWS, MOUTH_ROWS):
+            mask[:, round(r0 * size):round(r1 * size), c0:c1] = 1.0
+        return mask
+    if spec.startswith("top:"):
+        frac = float(spec.split(":", 1)[1])
+        cell_norm = direction.norm(dim=0)
+        k = max(1, round(frac * cell_norm.numel()))
+        thresh = cell_norm.flatten().topk(k).values[-1]
+        return (cell_norm >= thresh).float().unsqueeze(0)
+    raise SystemExit(f"unknown --mask: {spec}")
 
 STRENGTH_NAMES = ["weak", "mid", "strong"]
 HEADER_H = 24
@@ -62,8 +99,10 @@ def main() -> None:
     parser.add_argument("--strengths", type=float, nargs=3, default=[1.0, 2.0, 3.0],
                         help="weak/mid/strong, in units of latent proj_std")
     parser.add_argument("--limit", type=int, default=None, help="max input images")
-    parser.add_argument("--upscale", type=int, default=3, help="nearest-neighbor tile upscale")
+    parser.add_argument("--upscale", type=int, default=None,
+                        help="nearest-neighbor tile upscale (default: 3 below 256px, else 1)")
     parser.add_argument("--name", default="contact_sheet", help="output file stem")
+    parser.add_argument("--mask", default="none", help="none | eyes-mouth | top:<frac>")
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -77,6 +116,10 @@ def main() -> None:
     dir_state = torch.load(args.direction, map_location=device, weights_only=False)
     direction = dir_state["direction"].to(device)
     scale = dir_state["proj_std"]
+    direction = direction * build_mask(direction, args.mask)
+
+    if args.upscale is None:
+        args.upscale = 3 if cfg["resolution"] < 256 else 1
 
     ds = FlatImageDataset([args.input_dir], cfg["resolution"], train=False)
     n = min(len(ds), args.limit) if args.limit else len(ds)

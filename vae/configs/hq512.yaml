@@ -1,0 +1,24 @@
+# 512px run: CelebA-HQ (smile/neutral x gender) + Imagenette non-living.
+# 8GB VRAM -> AMP + batch 8. VGG perceptual loss + lower KL for sharpness.
+# NOTE: the team-wide evaluation setting is 256px (plan §0.3) — downscale
+# final outputs for the shared comparison.
+resolution: 512
+z_dim: 64
+latent_size: 16
+base_channels: 64
+max_channels: 512
+batch_size: 8
+steps: 30000
+beta_kl: 0.5
+lambda_perc: 0.5
+amp: true
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+data_dirs:
+  - ../data/raw/celeba_hq/smile_male
+  - ../data/raw/celeba_hq/smile_female
+  - ../data/raw/celeba_hq/neutral_male
+  - ../data/raw/celeba_hq/neutral_female
+  - ../data/raw/objects_hq
+out_dir: outputs/hq512
