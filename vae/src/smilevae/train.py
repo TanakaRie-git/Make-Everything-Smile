@@ -38,6 +38,7 @@ DEFAULTS = {
     "lambda_pixel": 0.5,
     "lambda_perc": 0.0,   # VGG16 perceptual loss weight (0 = off)
     "amp": False,         # mixed precision (needed for 512px on 8GB)
+    "init_from": None,    # checkpoint to warm-start weights from (fine-tuning)
     "steps": 3000,
     "num_workers": 4,
     "log_every": 100,
@@ -83,6 +84,10 @@ def train(cfg: dict) -> None:
 
     model = VAEGAN(cfg["resolution"], cfg["z_dim"], cfg["base_channels"], cfg["max_channels"],
                    cfg["latent_size"]).to(device)
+    if cfg["init_from"]:
+        init = torch.load(cfg["init_from"], map_location=device, weights_only=False)
+        model.load_state_dict(init["model"])
+        print(f"warm-started from {cfg['init_from']} (step {init.get('step')})")
     opt_eg = torch.optim.Adam(
         list(model.encoder.parameters()) + list(model.decoder.parameters()),
         lr=cfg["lr"], betas=(0.5, 0.999),

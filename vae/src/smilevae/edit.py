@@ -103,6 +103,10 @@ def main() -> None:
                         help="nearest-neighbor tile upscale (default: 3 below 256px, else 1)")
     parser.add_argument("--name", default="contact_sheet", help="output file stem")
     parser.add_argument("--mask", default="none", help="none | eyes-mouth | top:<frac>")
+    parser.add_argument("--feature-only", action="store_true",
+                        help="subtract the direction's spatial mean (the uniform "
+                             "'become-a-face' shift), keeping only localized eye/mouth "
+                             "structure — reduces contour/skin leaking onto the object")
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -116,6 +120,10 @@ def main() -> None:
     dir_state = torch.load(args.direction, map_location=device, weights_only=False)
     direction = dir_state["direction"].to(device)
     scale = dir_state["proj_std"]
+    if args.feature_only:
+        if direction.dim() != 3:
+            raise SystemExit("--feature-only requires a spatial latent direction")
+        direction = direction - direction.mean(dim=(1, 2), keepdim=True)
     direction = direction * build_mask(direction, args.mask)
 
     if args.upscale is None:
