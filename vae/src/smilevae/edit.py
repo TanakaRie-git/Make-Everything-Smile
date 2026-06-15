@@ -25,6 +25,7 @@ import argparse
 from pathlib import Path
 
 import torch
+import torch.nn.functional as F
 from PIL import Image, ImageDraw
 
 from .data import FlatImageDataset
@@ -34,6 +35,27 @@ from .models import VAEGAN
 EYE_ROWS = (0.32, 0.55)
 MOUTH_ROWS = (0.58, 0.85)
 FACE_COLS = (0.22, 0.78)
+
+
+def gaussian_blur(mask: torch.Tensor, sigma: float) -> torch.Tensor:
+    """Feather a (1,1,H,W) mask with a separable Gaussian."""
+    radius = max(1, int(3 * sigma))
+    xs = torch.arange(-radius, radius + 1, dtype=torch.float32, device=mask.device)
+    k = torch.exp(-(xs**2) / (2 * sigma**2))
+    k = (k / k.sum()).view(1, 1, 1, -1)
+    mask = F.conv2d(mask, k, padding=(0, radius))
+    return F.conv2d(mask, k.transpose(2, 3), padding=(radius, 0))
+
+
+def build_pixel_mask(size: int, device) -> torch.Tensor:
+    """Feathered (1,1,size,size) mask over the eye and mouth bands — used to
+    blend the smile delta into the object only where facial features belong,
+    keeping the object's own pixels everywhere else."""
+    mask = torch.zeros(1, 1, size, size, device=device)
+    c0, c1 = (round(f * size) for f in FACE_COLS)
+    for r0, r1 in (EYE_ROWS, MOUTH_ROWS):
+        mask[:, :, round(r0 * size):round(r1 * size), c0:c1] = 1.0
+    return gaussian_blur(mask, sigma=size / 24).clamp(0, 1)
 
 
 def build_mask(direction: torch.Tensor, spec: str) -> torch.Tensor:
@@ -107,6 +129,11 @@ def main() -> None:
                         help="subtract the direction's spatial mean (the uniform "
                              "'become-a-face' shift), keeping only localized eye/mouth "
                              "structure — reduces contour/skin leaking onto the object")
+    parser.add_argument("--blend", action="store_true",
+                        help="pixel-space delta blend: output = input + pixel_mask * "
+                             "(decode(z+dir) - decode(z)). Keeps the object's own sharp "
+                             "pixels and overlays only the smile delta in the eye/mouth "
+                             "region, at the object's own scale")
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
@@ -137,13 +164,19 @@ def main() -> None:
     col_names = ["input", "recon"] + [
         f"{nm} (α={a:g})" for nm, a in zip(STRENGTH_NAMES, args.strengths)
     ]
+    pmask = build_pixel_mask(cfg["resolution"], device) if args.blend else None
+
     rows = []
     for i in range(n):
         x = ds[i].unsqueeze(0).to(device)
         mu, _ = model.encoder(x)
-        outputs = [x[0], model.decoder(mu)[0]]
+        rec = model.decoder(mu)
+        outputs = [x[0], rec[0]]
         for alpha in args.strengths:
-            outputs.append(model.decoder(mu + alpha * scale * direction)[0])
+            edited = model.decoder(mu + alpha * scale * direction)
+            if args.blend:
+                edited = (x + pmask * (edited - rec)).clamp(-1, 1)
+            outputs.append(edited[0])
         rows.append((ds.paths[i].stem, [to_pil(t, args.upscale) for t in outputs]))
 
     sheet = make_sheet(rows, col_names)
