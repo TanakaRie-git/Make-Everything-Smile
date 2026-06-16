@@ -1,10 +1,10 @@
 # VAE トラック — VAE-GAN による物体への笑顔付与
 
-計画書([docs/make_everything_smile_plan.md](../docs/make_everything_smile_plan.md))の
+計画書([docs/make_everything_smile_plan.md](docs/make_everything_smile_plan.md))の
 VAE 担当分。VAE-GAN (Larsen et al. 2016) を CelebA(笑顔/中立)+物体画像で学習し、
 潜在空間の**笑顔方向ベクトル**で物体画像を編集する。
 
-> 📋 これまでの検証(条件・結果・在処)は **[検証ログ](../docs/vae_verification_log.md)** にまとめている。
+> 📋 これまでの検証(条件・結果・在処)は **[検証ログ](docs/vae_verification_log.md)** にまとめている。
 
 ## セットアップ
 
@@ -15,20 +15,20 @@ uv sync          # PyTorch は CUDA 12.4 ホイール (pyproject.toml の index 
 
 ## データ準備(スモークテスト用)
 
-データはリポジトリ直下の共有 `data/` に置く(gitignore 済み)。
+データは `vae/data/` に置く(gitignore 済み)。コマンドは `cd vae` から実行する想定。
 
 ```bash
 # CelebA(aligned, 属性付き)から 笑顔/中立 × 男/女 を各1000枚(計4000枚)
-uv run scripts/download_celeba.py --source celeba --n-per-class 1000 --out ../data/raw/celeba
+uv run scripts/download_celeba.py --source celeba --n-per-class 1000 --out data/raw/celeba
 
 # 物体: Tiny ImageNet を WordNet 階層で非生物クラスにフィルタ
-uv run scripts/download_objects_smoke.py --out ../data/raw/objects_smoke --n-classes 30 --n-per-class 100
+uv run scripts/download_objects_smoke.py --out data/raw/objects_smoke --n-classes 30 --n-per-class 100
 
 # (+Pareidolia 条件用) Faces in Things 公式 zip + happy サブセット抽出
-uv run scripts/download_faces_in_things.py --out ../data/raw/faces_in_things
+uv run scripts/download_faces_in_things.py --out data/raw/faces_in_things
 
 # (256px 本番用) CelebA-HQ。キャプションで笑顔判定
-uv run scripts/download_celeba.py --source celeba-hq --n-per-class 5000 --out ../data/raw/celeba_hq
+uv run scripts/download_celeba.py --source celeba-hq --n-per-class 5000 --out data/raw/celeba_hq
 ```
 
 ## 学習 → 笑顔方向 → 編集
@@ -40,8 +40,8 @@ uv run python -m smilevae.train configs/smoke64.yaml
 # 2. 潜在空間の笑顔方向を算出(男女別ペアの平均で性別のもつれを軽減)
 uv run python -m smilevae.direction \
   --ckpt outputs/smoke64_v3/ckpt/last.pt \
-  --pair ../data/raw/celeba/smile_male ../data/raw/celeba/neutral_male \
-  --pair ../data/raw/celeba/smile_female ../data/raw/celeba/neutral_female \
+  --pair data/raw/celeba/smile_male data/raw/celeba/neutral_male \
+  --pair data/raw/celeba/smile_female data/raw/celeba/neutral_female \
   --out outputs/smoke64_v3/smile_direction.pt
 
 # 3. 物体画像へ弱/中/強の3段階で笑顔付与(計画 §0.3)
@@ -50,7 +50,7 @@ uv run python -m smilevae.direction \
 uv run python -m smilevae.edit \
   --ckpt outputs/smoke64_v3/ckpt/last.pt \
   --direction outputs/smoke64_v3/smile_direction.pt \
-  --input-dir ../data/raw/objects_smoke/n02769748_backpack \
+  --input-dir data/raw/objects_smoke/n02769748_backpack \
   --out-dir outputs/smoke64_v3/edits --limit 8 --strengths 4 8 12 --name backpack
 ```
 

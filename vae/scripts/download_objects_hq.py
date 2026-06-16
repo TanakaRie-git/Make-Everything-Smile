@@ -5,7 +5,7 @@ Like Tiny ImageNet for the 64px smoke, this is a stand-in until the team's
 curated ImageNet object set is ready (plan §2.1).
 
 Usage:
-    uv run scripts/download_objects_hq.py --out ../data/raw/objects_hq --max-side 600
+    uv run scripts/download_objects_hq.py --out data/raw/objects_hq --max-side 600
 """
 
 import argparse

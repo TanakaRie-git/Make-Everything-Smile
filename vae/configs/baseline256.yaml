@@ -7,7 +7,7 @@ z_dim: 512
 batch_size: 16          # 8GB VRAM
 steps: 60000
 data_dirs:
-  - ../data/raw/celeba_hq/smile
-  - ../data/raw/celeba_hq/neutral
-  - ../data/processed/objects
+  - data/raw/celeba_hq/smile
+  - data/raw/celeba_hq/neutral
+  - data/processed/objects
 out_dir: outputs/baseline256

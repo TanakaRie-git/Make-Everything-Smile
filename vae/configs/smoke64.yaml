@@ -10,9 +10,9 @@ batch_size: 64
 steps: 20000
 sample_every: 1000
 data_dirs:
-  - ../data/raw/celeba/smile_male
-  - ../data/raw/celeba/smile_female
-  - ../data/raw/celeba/neutral_male
-  - ../data/raw/celeba/neutral_female
-  - ../data/raw/objects_smoke
+  - data/raw/celeba/smile_male
+  - data/raw/celeba/smile_female
+  - data/raw/celeba/neutral_male
+  - data/raw/celeba/neutral_female
+  - data/raw/objects_smoke
 out_dir: outputs/smoke64_v3

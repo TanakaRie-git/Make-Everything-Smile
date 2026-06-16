@@ -6,7 +6,7 @@ that fill the frame — like the Faces in Things apple/bag examples — are the
 right canvas. Source: VinayHajare/Fruits-30 (single fruit per image, 400-1300px).
 
 Usage:
-    uv run scripts/download_objects_single.py --out ../data/raw/objects_single \
+    uv run scripts/download_objects_single.py --out data/raw/objects_single \
         --per-class 6 --max-side 600
 """
 

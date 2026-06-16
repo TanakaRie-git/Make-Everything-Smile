@@ -3,7 +3,7 @@
 「ただの物体への笑顔付与」VAE担当([計画書](make_everything_smile_plan.md))の検証記録。
 各検証の **条件 → 結果 → 結果の在処** を時系列でまとめる。
 
-- コード: [vae/](../vae/)、各runの厳密な設定は `vae/outputs/<run>/config.json`(学習時に自動保存)
+- コード: [vae/](../)、各runの厳密な設定は `vae/outputs/<run>/config.json`(学習時に自動保存)
 - 結果画像の原本は `vae/outputs/<run>/`(gitignore・再生成可能)。本書には代表画像のみ [docs/assets/vae/](assets/vae/) に複製して掲載
 - 環境: RTX 3070 Ti (8GB)、WSL2、uv管理(PyTorch cu124)
 
@@ -43,7 +43,7 @@
 
 ## 3. smoke64_v3 — 空間潜在＋男女別方向
 
-- **条件**: 64px、**空間潜在 8×8×64**、20000 step。CelebAを **笑顔/中立 × 男/女** の4分割でDLし、男女別に方向を計算して平均(性別もつれ対策)。設定: [vae/configs/smoke64.yaml](../vae/configs/smoke64.yaml)。
+- **条件**: 64px、**空間潜在 8×8×64**、20000 step。CelebAを **笑顔/中立 × 男/女** の4分割でDLし、男女別に方向を計算して平均(性別もつれ対策)。設定: [vae/configs/smoke64.yaml](../configs/smoke64.yaml)。
 - **結果**: 物体の構図・色が **保持されたまま** 編集できるようになった(グローバル潜在の崩壊が解消)。物体は顔より強いα が必要(顔1〜3 / 物体4〜12)で、αを上げると「物体のまま→顔がうっすら宿る→顔が支配的」と遷移。
 - **在処**: 顔 [v3_faces_sanity.jpg](assets/vae/v3_faces_sanity.jpg) / アイス強度振り [v3_icecream.jpg](assets/vae/v3_icecream.jpg)。原本 `vae/outputs/smoke64_v3/edits/`。コミット `d005d6b`。
 
@@ -52,7 +52,7 @@
 
 ## 4. hq512 — 512px Baseline
 
-- **条件**: **512px**、空間潜在 16×16×64、30000 step(189分)。AMP(混合精度)＋VGG perceptual loss、KL重み0.5。データ = CelebA-HQ(笑顔/中立×男女 各1000)＋ Imagenette 非生物8クラス。設定: [vae/configs/hq512.yaml](../vae/configs/hq512.yaml)。
+- **条件**: **512px**、空間潜在 16×16×64、30000 step(189分)。AMP(混合精度)＋VGG perceptual loss、KL重み0.5。データ = CelebA-HQ(笑顔/中立×男女 各1000)＋ Imagenette 非生物8クラス。設定: [vae/configs/hq512.yaml](../configs/hq512.yaml)。
 - **結果**: 顔の笑顔方向は512pxでも機能。一方 **物体はぼやけ、出てくる顔が物体とスケール不一致**(人間スケールの顔が貼り付く)、**輪郭まで一緒に乗る**。スクラッチVAE-GANを512px・約9千枚で学習する画質の天井に近い。
 - **在処**: スケール不一致・輪郭リーク例 [hq512_golf_scale_contour.jpg](assets/vae/hq512_golf_scale_contour.jpg)。原本 `vae/outputs/hq512/edits/`。コミット `9dc30f0`。
 
@@ -60,7 +60,7 @@
 
 ## 5. pareidolia512 — +Pareidolia(Faces in Things 追加)
 
-- **条件**: hq512から **微調整(warm-start)**、15000 step(102分)。Baselineデータ ＋ **Faces in Things の happy サブセット(1216枚)を4回オーバーサンプル(約35%)**。設定: [vae/configs/pareidolia512.yaml](../vae/configs/pareidolia512.yaml)。
+- **条件**: hq512から **微調整(warm-start)**、15000 step(102分)。Baselineデータ ＋ **Faces in Things の happy サブセット(1216枚)を4回オーバーサンプル(約35%)**。設定: [vae/configs/pareidolia512.yaml](../configs/pareidolia512.yaml)。
 - **狙いと知見**: FiTを学習に入れ、編集方向も **`FiT-happy − 物体`** から作ると、「人間の顔」ではなく「顔に見える物体」へ押せる(スケール・輪郭が物体側に揃う)。
 - **結果**: FiT方向は作れるが、**FiTは現モデルにとって学習量不足で再構成が崩れる**([hq512_fit_recon_ood.jpg](assets/vae/hq512_fit_recon_ood.jpg) は Baselineモデルでの再構成崩れ。微調整後も大きくは改善せず)。FiT風のくっきりした顔の手がかりを描く精度には未到達。
 - **在処**: 原本 `vae/outputs/pareidolia512/`。コミット `d181a9e`。
@@ -77,7 +77,7 @@
 
 ## 7. fruit_demo — 単一物体(果物)への憑依【本命作例】
 
-- **条件**: 単一で大きく写った物体(VinayHajare/Fruits-30)を編集キャンバスに。`--blend` で物体を保持しつつ、CelebA方向 / FiT方向の両方で笑顔差分を中央に重ねる。取得: [vae/scripts/download_objects_single.py](../vae/scripts/download_objects_single.py)。
+- **条件**: 単一で大きく写った物体(VinayHajare/Fruits-30)を編集キャンバスに。`--blend` で物体を保持しつつ、CelebA方向 / FiT方向の両方で笑顔差分を中央に重ねる。取得: [vae/scripts/download_objects_single.py](../scripts/download_objects_single.py)。
 - **結果**: **単一果物(レモン半割り・リンゴ・アボカド等)で、果物をシャープに保ったまま中央に笑顔が宿る**。建物・シーンより圧倒的に向く(FiTのリンゴ/バッグ例と同じ構図)。CelebA方向のほうがFiT方向よりくっきり。高強度ではゴースト(VAEのぼやけ)が残る。
 - **在処**: [fruit_lemons.jpg](assets/vae/fruit_lemons.jpg) / [fruit_apples.jpg](assets/vae/fruit_apples.jpg) / [fruit_avocados_fit.jpg](assets/vae/fruit_avocados_fit.jpg)。原本 `vae/outputs/fruit_demo/`。コミット `10514e5`。
 

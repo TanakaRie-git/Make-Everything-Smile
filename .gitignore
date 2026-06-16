@@ -217,10 +217,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-# shared data / outputs (plan §5.0: per-method envs + shared layers at repo root)
-/data/
-/outputs/
-vae/outputs/
+# data / outputs (re-generatable; live under the vae track)
+/vae/data/
+/vae/outputs/
 
 # Claude 個人設定(チームへは push しない)
 /CLAUDE.md

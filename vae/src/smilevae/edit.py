@@ -17,7 +17,7 @@ face — possess the object:
 Usage:
     python -m smilevae.edit --ckpt outputs/hq512/ckpt/last.pt \
         --direction outputs/hq512/smile_direction.pt \
-        --input-dir ../data/raw/objects_hq/golf_ball --out-dir outputs/hq512/edits \
+        --input-dir data/raw/objects_hq/golf_ball --out-dir outputs/hq512/edits \
         --strengths 4 8 12 --mask eyes-mouth
 """
 

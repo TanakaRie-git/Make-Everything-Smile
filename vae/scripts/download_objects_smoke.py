@@ -7,7 +7,7 @@ NOTE: this is a smoke-test stand-in. The full-resolution object set comes from
 ImageNet proper, curated by the cross-cutting data owner.
 
 Usage:
-    uv run scripts/download_objects_smoke.py --out ../data/raw/objects_smoke \
+    uv run scripts/download_objects_smoke.py --out data/raw/objects_smoke \
         --n-classes 30 --n-per-class 100
 """
 

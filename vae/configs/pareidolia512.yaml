@@ -20,13 +20,13 @@ sample_every: 1000
 ckpt_every: 2000
 log_every: 50
 data_dirs:
-  - ../data/raw/celeba_hq/smile_male
-  - ../data/raw/celeba_hq/smile_female
-  - ../data/raw/celeba_hq/neutral_male
-  - ../data/raw/celeba_hq/neutral_female
-  - ../data/raw/objects_hq
-  - ../data/raw/faces_in_things/happy
-  - ../data/raw/faces_in_things/happy
-  - ../data/raw/faces_in_things/happy
-  - ../data/raw/faces_in_things/happy
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+  - data/raw/objects_hq
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
 out_dir: outputs/pareidolia512

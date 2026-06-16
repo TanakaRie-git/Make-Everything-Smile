@@ -9,7 +9,7 @@ lighter stand-in for low-resolution smoke tests):
 
 Usage:
     uv run scripts/download_celeba.py --source celeba --n-per-class 2000 \
-        --out ../data/raw/celeba
+        --out data/raw/celeba
 """
 
 import argparse

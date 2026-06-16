@@ -7,7 +7,7 @@ The metadata column `Emotion?` holds the annotated emotion; rows whose primary
 annotation is Happy are copied into <out>/happy/.
 
 Usage:
-    uv run scripts/download_faces_in_things.py --out ../data/raw/faces_in_things
+    uv run scripts/download_faces_in_things.py --out data/raw/faces_in_things
 """
 
 import argparse

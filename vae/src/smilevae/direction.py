@@ -11,8 +11,8 @@ Also stores the std of latent projections onto the direction, so edit strengths
 
 Usage:
     python -m smilevae.direction --ckpt outputs/smoke64/ckpt/last.pt \
-        --pair ../data/raw/celeba/smile_male ../data/raw/celeba/neutral_male \
-        --pair ../data/raw/celeba/smile_female ../data/raw/celeba/neutral_female \
+        --pair data/raw/celeba/smile_male data/raw/celeba/neutral_male \
+        --pair data/raw/celeba/smile_female data/raw/celeba/neutral_female \
         --out outputs/smoke64/smile_direction.pt
 """
 
