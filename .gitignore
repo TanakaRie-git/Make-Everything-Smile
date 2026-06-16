@@ -221,3 +221,6 @@ __marimo__/
 /data/
 /outputs/
 vae/outputs/
+
+# Claude 個人設定(チームへは push しない)
+/CLAUDE.md
