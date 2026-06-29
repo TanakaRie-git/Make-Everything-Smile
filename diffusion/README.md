@@ -15,10 +15,11 @@ diffusion/
 │   └── train_lora.yaml     # 学習設定
 ├── data/
 │   ├── build_pairs.py      # 非笑顔→笑顔ペア構築（属性ベースのランダムサンプリング）
-│   └── dataset.py          # PyTorch Dataset
+│   ├── dataset.py          # PyTorch Dataset
+│   └── facesinthings.py    # FacesInThings（物に見える顔）ローダ（推論時の入力に使用）
 ├── scripts/
 │   ├── train.py            # 学習メイン（IP2P 8ch 入力 + peft LoRA）
-│   └── infer.py            # 推論
+│   └── infer.py            # 推論（単一画像 / FacesInThings 一括）
 └── README.md
 ```
 
@@ -83,6 +84,10 @@ uv run python scripts/train.py --config configs/train_lora.yaml \
 
 ## 3. 推論
 
+入力は 2 通り。
+
+### (A) 単一画像
+
 ```bash
 uv run python scripts/infer.py \
   --lora_path outputs/smile_lora_v1/final/unet_lora \
@@ -92,7 +97,28 @@ uv run python scripts/infer.py \
 
 → `<name>_smile.png`（変換結果）と `<name>_compare.png`（入力|出力 比較）を出力。
 
-調整: `--image_guidance_scale`（元画像保持, 既定 1.5）と `--guidance_scale`
+### (B) FacesInThings 一括（パレイドリア＝物に見える顔）
+
+`data/facesinthings.py` が読む FacesInThings データセット（物の中の顔を矩形付きで持つ）を
+入力に、まとめて笑顔化する。
+
+```bash
+uv run python scripts/infer.py \
+  --lora_path outputs/smile_lora_v1/final/unet_lora \
+  --facesinthings_root ../data --download \
+  --max_images 20 --use_box \
+  --output_dir outputs/pareidolia
+```
+
+- `--facesinthings_root`: `<root>/FacesInThings/` を探す。`--download` で無ければ
+  `https://aka.ms/faces-dataset` から取得・展開。
+- `--use_box`: 顔矩形(boxes)にクロップしてから笑顔化（画像全体より顔領域を切り出した方が効きやすい）。
+  `--box_pad`（既定 0.3）で矩形周囲の余白、`--paste_back` で編集後クロップを元画像に貼り戻した合成も保存。
+- `--split {all,train,test}` / `--primary_only` / `--max_images` で対象を絞り込む。
+
+### 共通の調整
+
+`--image_guidance_scale`（元画像保持, 既定 1.5）と `--guidance_scale`
 （テキスト条件, 既定 7.5）。identity が崩れる場合は `image_guidance_scale` を 2.0〜2.5 に上げる。
 
 素の IP2P と比較したい場合は `--no_lora` を付ける。

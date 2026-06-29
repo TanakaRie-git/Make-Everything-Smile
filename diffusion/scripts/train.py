@@ -16,6 +16,7 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
 import math
 import os
 import sys
@@ -315,17 +316,26 @@ def run_validation(accelerator, cfg, model_id, revision, unet, vae, text_encoder
     out_dir.mkdir(parents=True, exist_ok=True)
 
     generator = torch.Generator(device=accelerator.device).manual_seed(cfg.get("seed", 0) or 0)
+    # LoRA パラメータは fp32、base 重みは fp16 の混在状態。学習ループは
+    # accelerator.accumulate() が autocast を張るので問題ないが、検証は
+    # autocast の外なので明示的に張らないと dtype 不一致で落ちる。
+    autocast_ctx = (
+        torch.autocast(accelerator.device.type, dtype=weight_dtype)
+        if weight_dtype in (torch.float16, torch.bfloat16)
+        else contextlib.nullcontext()
+    )
     for i in range(n):
         item = val_pairs[i]
         src = Image.open(item["original"]).convert("RGB").resize((cfg.resolution, cfg.resolution))
-        edited = pipe(
-            item.get("instruction", "make the person smile"),
-            image=src,
-            num_inference_steps=20,
-            image_guidance_scale=1.5,
-            guidance_scale=7.5,
-            generator=generator,
-        ).images[0]
+        with autocast_ctx:
+            edited = pipe(
+                item.get("instruction", "make the person smile"),
+                image=src,
+                num_inference_steps=20,
+                image_guidance_scale=1.5,
+                guidance_scale=7.5,
+                generator=generator,
+            ).images[0]
         # 入力 | 出力 を横並びにして保存。
         combo = Image.new("RGB", (cfg.resolution * 2, cfg.resolution))
         combo.paste(src, (0, 0))

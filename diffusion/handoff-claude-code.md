@@ -73,6 +73,11 @@ uv run python data/build_pairs.py \
   --max_pairs 10000 \
   --val_ratio 0.1
 ```
+自分用
+```
+uv run python data/build_pairs.py   --data_root ../data/Celeb
+AMask-HQ   --out_dir pairs   --max_pairs 10000   --val_ratio 0.1
+```
 
 `data/build_pairs.py` の実装方針と既知の制約：
 
