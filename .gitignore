@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# data / outputs (re-generatable; live under the vae track)
+/gan/data/
+/gan/outputs/
