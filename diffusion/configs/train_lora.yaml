@@ -1,0 +1,56 @@
+# InstructPix2Pix + LoRA 学習設定（Smile transfer）
+# scripts/train.py から omegaconf で読み込む。
+
+# --- モデル ---
+# 必ず IP2P 系を使う。通常の SD1.5 だと U-Net in_channels=4 になり 8ch concat で
+# shape mismatch する（引き継ぎ書の注意点）。
+pretrained_model: "timbrooks/instruct-pix2pix"
+revision: null
+
+# --- データ ---
+# build_pairs.py の出力 JSON を指す。実データ配置に合わせて変更すること。
+train_pairs: "pairs/train.json"
+val_pairs: "pairs/val.json"
+
+# --- 解像度 / バッチ ---
+# まず 256px で動作確認 → 通ってから 512px に上げる（引き継ぎ書の指示）。
+resolution: 256
+train_batch_size: 4
+dataloader_num_workers: 4
+random_flip: true
+
+# --- 学習ハイパラ ---
+learning_rate: 1.0e-4
+lr_scheduler: "constant"        # constant | cosine | linear
+lr_warmup_steps: 0
+num_train_epochs: 1
+max_train_steps: null            # 指定すると epoch より優先
+gradient_accumulation_steps: 1
+max_grad_norm: 1.0
+mixed_precision: "fp16"          # "no" | "fp16" | "bf16"
+seed: 42
+
+# IP2P の CFG 用 conditioning dropout（テキスト/画像条件をランダムに落とす）
+conditioning_dropout_prob: 0.05
+
+# --- LoRA ---
+# U-Net の attention 層のみに適用。VAE / text encoder は凍結。
+lora_rank: 8
+lora_alpha: 8
+lora_dropout: 0.0
+lora_target_modules:
+  - "to_k"
+  - "to_q"
+  - "to_v"
+  - "to_out.0"
+
+# --- 出力 / ログ ---
+output_dir: "outputs/smile_lora_v1"
+checkpointing_steps: 500         # N step ごとに中間チェックポイント保存
+validation_steps: 500            # N step ごとに検証画像を保存
+num_validation_images: 4
+logging_dir: "logs"              # TensorBoard。output_dir/logs に出力される
+
+# TODO(将来拡張): LPIPS 損失の追加。今は epsilon-MSE のみで動作確認を優先する。
+# use_lpips: false
+# lpips_weight: 0.1
