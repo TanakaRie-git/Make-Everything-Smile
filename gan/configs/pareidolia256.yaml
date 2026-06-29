@@ -1,0 +1,37 @@
+# +Pareidolia condition (plan §2.3): Baseline data + Faces in Things (happy).
+# Fine-tuned from the Baseline checkpoint so the generator learns to render
+# object-textured face cues without paying for another full training run.
+# FiT-happy listed 4x to oversample it (~35% of the pool), matching the VAE track.
+resolution: 256
+z_channels: 512
+latent_size: 16
+base_channels: 64
+max_channels: 512
+n_res: 6
+style_dim: 128
+batch_size: 8
+lr_g: 1e-4
+lr_d: 5e-5
+lambda_cls: 1.0
+lambda_rec: 10.0
+lambda_cyc: 10.0
+lambda_perc: 0.5
+amp: true
+init_from: outputs/baseline256_gan/ckpt/last.pt
+steps: 15000
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+smile_dirs:
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+neutral_dirs:
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+object_dirs:
+  - data/processed/objects
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+out_dir: outputs/pareidolia256_gan
