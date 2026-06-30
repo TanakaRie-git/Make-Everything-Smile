@@ -1,0 +1,1718 @@
+[
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20163.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14224.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10037.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18259.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29680.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13220.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17543.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29618.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29136.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11927.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000015485.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000015260.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12856.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12266.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11923.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19418.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000016057.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000016610.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6178.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6384.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6554.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22586.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007694.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010232.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000024183.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000013805.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4515.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14990.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25227.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25363.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6141.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28987.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21408.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21356.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23768.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1342.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000022072.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007040.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24581.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1408.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14220.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22302.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13531.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28806.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2693.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5110.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25102.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14355.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000019994.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000011767.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7313.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29360.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8718.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17476.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24188.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10570.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22822.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19075.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22512.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18029.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4137.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26516.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010463.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005645.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1150.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29562.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15157.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26228.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006709.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005937.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005047.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000026071.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21679.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3772.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12790.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1557.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8875.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8988.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25632.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/307.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000017449.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007585.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3548.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13075.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17049.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9335.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29566.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8210.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7651.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4512.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000022526.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000001560.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18178.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11777.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011181.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005811.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/281.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9454.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26386.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2584.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8498.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25704.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005994.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000000986.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15718.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12004.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23211.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23663.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1000.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15863.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010711.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005906.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11509.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26089.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21566.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13171.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23919.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13294.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4389.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19317.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6047.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23662.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28900.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10140.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25986.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11953.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005244.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006031.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22445.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12999.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000019222.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007608.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7187.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16921.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/27038.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6997.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4432.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20156.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24132.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5057.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2555.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29242.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25688.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/27309.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19735.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24407.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010941.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005154.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007107.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000027732.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5540.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12756.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000012606.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006226.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006772.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005300.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8317.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/27156.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12342.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20248.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010665.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000001901.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000014291.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000012746.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011087.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006715.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000018415.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000025253.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000021216.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006564.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5991.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23568.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000017786.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006174.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006130.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000017985.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011184.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000020019.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29247.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19709.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9065.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28941.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1548.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25238.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000015399.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000020503.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000003681.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005296.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000021802.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010888.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28310.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6601.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14116.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5190.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005220.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000011089.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5859.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5683.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18920.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14301.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1785.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/193.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15281.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6117.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20696.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7688.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26170.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3021.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16034.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23151.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007995.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000001745.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000002283.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006227.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29949.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29666.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20112.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22662.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28027.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11503.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3558.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18794.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11830.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21849.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13404.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20336.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/745.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29928.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24804.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16634.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18321.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22210.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000017090.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005112.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000004063.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000004448.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28421.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25344.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25644.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22116.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/337.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23124.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000018278.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000017355.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005260.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000000754.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12110.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29495.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1894.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26068.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000016146.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006300.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2386.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10555.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007325.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007769.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10791.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4193.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2066.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12068.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5129.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4111.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010000.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000011754.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17178.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28592.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10960.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20661.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1320.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26854.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22757.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6991.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28635.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21695.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006889.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010068.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/27649.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19558.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12289.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14832.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000013732.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007529.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21366.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24697.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24642.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17206.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000000875.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006101.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000026355.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000021253.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000024526.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006726.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/763.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23330.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000019443.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000024665.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10781.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19801.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005713.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000024190.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21539.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2063.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26508.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18262.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011574.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000003471.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8674.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20655.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29890.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29113.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7501.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2850.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17663.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8731.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13103.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19015.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17023.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24096.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000016949.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000017982.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1414.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20298.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10069.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18152.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17606.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16456.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9563.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22688.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000010219.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000003114.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7861.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1703.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28481.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26282.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18227.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11951.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007524.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000012001.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000003107.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000027818.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29521.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25346.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23943.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4230.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7278.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12245.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8562.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1166.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000003821.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000013153.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000014024.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000004262.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/741.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5240.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006468.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000014625.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23498.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13309.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9690.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23793.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11900.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/553.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12050.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4014.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5907.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22133.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000018126.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000017383.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26824.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14810.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7086.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8847.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000018382.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006086.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000001489.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000026013.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29658.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/511.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12864.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11709.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22111.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11920.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2577.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1464.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21115.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26000.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11111.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20260.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000009088.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000027675.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23462.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22329.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000014051.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005887.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4054.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20548.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/29463.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14731.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18109.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18651.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12926.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3172.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12415.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28868.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5884.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16292.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22253.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28030.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4630.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2306.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17679.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2680.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000004694.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000000080.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/683.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1831.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000025222.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007073.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21177.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22828.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/20991.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13557.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23824.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24001.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16883.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9783.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17970.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26042.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4490.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22102.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24163.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17962.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007457.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000019477.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28889.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15691.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000020936.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000027879.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14214.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1862.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19243.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3245.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011901.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005447.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16673.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/1723.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10180.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23648.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000016065.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000013590.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21907.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25510.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005470.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010775.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23665.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/7345.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000028147.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000005316.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21943.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2675.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/13253.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11828.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9398.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2959.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5906.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6240.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11343.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/26393.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011517.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000002582.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12139.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5915.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5432.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15320.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18154.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19920.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19713.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10549.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000022935.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000020158.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000025356.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000017470.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10827.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8934.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8971.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3556.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000011108.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006511.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15873.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22924.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000022476.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000007255.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9310.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23464.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000004635.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006185.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17428.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21232.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22685.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3538.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007476.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000025387.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16369.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23098.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17369.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22527.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006859.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010613.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15393.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/3656.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17652.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19585.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000014151.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006393.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000007794.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000023508.png",
+    "instruction": "make the face smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/761.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/2.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22137.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23677.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16905.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4156.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11043.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17844.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/834.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/11091.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6752.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/181.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9013.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25818.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/28633.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/14175.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24222.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19373.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12332.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/10934.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17110.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/4749.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000013271.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006048.png",
+    "instruction": "make it smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5898.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/22893.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/12777.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/27217.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000022111.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006028.png",
+    "instruction": "make them smile",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5328.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8790.jpg",
+    "instruction": "make it happy",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000028020.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000004583.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/8805.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/5652.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19485.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23130.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/18844.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24220.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/15232.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/6924.jpg",
+    "instruction": "make them smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000006945.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000006077.png",
+    "instruction": "make it happy",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/249.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/19579.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/23566.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/9677.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/16499.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/24353.jpg",
+    "instruction": "make the face smile",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/17496.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/21761.jpg",
+    "instruction": "give it a happy smiling face",
+    "source": "celeba"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/neutral/000005730.png",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/diffusion/data/cache/facesinthings_crops/happy/000010085.png",
+    "instruction": "give it a happy smiling face",
+    "source": "facesinthings"
+  },
+  {
+    "original": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/25561.jpg",
+    "target": "/home/rmasuda/work/Make-Everything-Smile/data/CelebAMask-HQ/CelebA-HQ-img/198.jpg",
+    "instruction": "make it smile",
+    "source": "celeba"
+  }
+]

@@ -123,8 +123,67 @@ uv run python scripts/infer.py \
 
 素の IP2P と比較したい場合は `--no_lora` を付ける。
 
+## 4. パレイドリア neutral → happy policy（混合データ学習）
+
+パレイドリア（物に見える顔）を **neutral → happy** に変換する policy を、2 つのデータを
+**混合**して学習する。
+
+- **CelebAMask-HQ**: `Smiling` 属性で neutral(非笑顔) → smile ペア（リアルな笑顔の事前知識）。
+- **FacesInThings**: `metadata.csv` の `Emotion?` 列で **Neutral → Happy** ペア（パレイドリア本体）。
+  顔矩形(`boxes`)で正方形クロップしてからペア化するので、`infer.py --use_box` の推論分布と揃う。
+
+どちらも「同一対象の neutral/happy ペア」が存在しないため、群ごとに独立サンプリングして
+ペア化する（`build_pairs.py` と同じ方針）。
+
+### 4.1 混合ペア構築
+
+```bash
+uv run python data/build_pairs_pareidria.py \
+  --celeba_root ../data/CelebAMask-HQ \
+  --facesinthings_root ../data \
+  --max_celeba_pairs 2000 \
+  --out_dir pairs/pareidria
+```
+
+- `--celeba_root` / `--facesinthings_root`: 片方だけ指定すればそのソース単独でも作れる。
+- `--max_celeba_pairs`（既定 2000）/ `--max_fit_pairs`（既定 全部）: **混合比**の調整。
+  CelebA が量で FacesInThings を圧倒しないように分けて上限を持つ。
+- `--fit_split train`（既定）: FacesInThings は train split のみ学習に使い、**test split は
+  推論評価用に温存**する。
+- `--box_pad`（既定 0.3）: 顔クロップの余白。`infer.py --box_pad` と揃えること。
+- `--crop_dir`（既定 `data/cache/facesinthings_crops/`）: クロップのキャッシュ先（再実行時は再利用）。
+
+→ `pairs/pareidria/train.json`, `pairs/pareidria/val.json` を生成。各要素は
+`{original, target, instruction, source}`（`source` は `celeba` / `facesinthings`）。
+
+### 4.2 学習
+
+```bash
+uv run python scripts/train.py --config configs/train_lora_pareidria.yaml
+```
+
+`configs/train_lora_pareidria.yaml` は上記 `pairs/pareidria/` を読み、LoRA を
+`outputs/smile_lora_pareidria_v1/final/unet_lora/` に保存する。設定要点は §2 と同じ
+（IP2P 8ch 入力 / attention 層 LoRA / まず 256px）。
+
+### 4.3 推論（パレイドリアを笑顔化）
+
+学習した LoRA を §3(B) の FacesInThings 一括推論に渡す。学習クロップと揃えるため
+`--use_box` を付ける（`--box_pad` は構築時と同値に）。`--split test` で評価用に温存した
+未学習サンプルに対して効果を確認できる。
+
+```bash
+uv run python scripts/infer.py \
+  --lora_path outputs/smile_lora_pareidria_v1/final/unet_lora \
+  --facesinthings_root ../data \
+  --split test --use_box --box_pad 0.3 --paste_back \
+  --max_images 20 \
+  --output_dir outputs/pareidria_results
+```
+
 ## TODO / 将来拡張
 
 - identity ベースのペアリング（`build_pairs.py`）— 品質改善時に検討。
+- FacesInThings の Sad / Angry など他感情を neutral 側に取り込む拡張（`build_pairs_pareidria.py`）。
 - LPIPS 損失の追加（`train.py` は現状 epsilon-MSE のみ）。
 - 512px での VRAM 使用量・学習時間の記録。
