@@ -116,6 +116,27 @@ uv run python experiments/pretrained_ae/cascade_smile.py \
 (物体保存は失う)。→ `fit_direction`+`--keep-color`(物体を保ち控えめに笑う)と対の関係で、
 **「物体を残す」↔「笑顔を強くする」の2極**を成す。原本 `outputs/pretrained_ae/cascade/`。
 
+## 個性を保つ低α版(「みんな同じ顔」を避ける)
+
+高 α で全物体が同じ平均顔に収束するのは、**一律ベクトル `α·d` が入力固有の `z` を圧倒**する
+ため(=強い笑顔と個体保存のトレードオフ)。α を下げれば `z`(物体の個性)が残る。
+
+```bash
+# 推奨: CelebA 方向・低α・色保持(各物体が別物のまま口元に笑み)
+uv run python experiments/pretrained_ae/compare_facesinthings.py \
+  --direction outputs/pretrained_ae/smile_direction.pt --scales 0 0.5 1 1.5 --keep-color \
+  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --out-dir outputs/pretrained_ae/low_celeba_kc
+```
+
+生成済みの比較3種(共通10 ID・α ラダー `0 0.5 1 1.5`・色保持):
+- `outputs/pretrained_ae/low_celeba_kc/` — CelebA 方向。個体を保ちつつ笑む。**推奨**。
+- `outputs/pretrained_ae/low_celeba_feat_kc/` — 上 + `--feature-only`(平均顔への一律成分を除去)。低αでは A とほぼ同等。
+- `outputs/pretrained_ae/low_fit_kc/` — FiT 方向。最も控えめ(物体の表情変化)。
+
+**知見**: 低α(≲1.5)+色保持で「同じ顔」収束は消え、各物体が個性を保ったまま口元に笑みが出る。
+強い笑顔がほしければ α を上げる/カスケードする(ただし人間顔に収束)。個体保存を最優先するなら低α。
+
 ## 依存
 
 `diffusers` / `safetensors`(共有 `pyproject.toml` に追加済み)。SD-VAE 重み ~335MB を
