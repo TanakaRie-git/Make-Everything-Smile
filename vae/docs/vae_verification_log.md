@@ -24,6 +24,7 @@
 | 6 | blend_demo | 512 | — | 物体保存(ピクセル合成) | 物体をシャープに保てる |
 | 7 | fruit_demo | 512 | — | 単一物体への憑依 | 単一果物で笑顔が宿る(本命作例) |
 | 8 | diffusion_compare | 512 | 空間16×16×64 | Diffusionと同一入力で比較 | 同一 crop で object→人間笑顔の連続遷移を再現 |
+| 9 | pretrained_ae | 512 | SD-VAE潜在4×64×64 | 事前学習AEを土台に | シャープな再構成＋物体保存で笑顔が宿る |
 
 ---
 
@@ -92,6 +93,14 @@
 - **結果**: **両条件とも α を上げると object → 人間の笑顔へ連続遷移**(パレイドリア画像がそのまま人間顔になるのは高 α 側の想定結果)。Baseline(hq512)は年配男性寄り、+Pareidolia(pareidolia512)は別の笑顔顔＋歯の見え方が変化。crop が顔枠なので α=4 で既に顔が支配的、物体保存は両者とも弱い。全域で VAE 特有のボケ(diffusion のシャープさとの対比が比較の主眼)。
 - **注意**: `fit_direction`(FiT-happy 方向)は pareidolia512 では **α≥4 で格子状ノイズに崩壊**(proj_std≈34 で過剰に押すため)。使う場合は α を `0 1 2 3` 程度に絞る。
 - **在処**: 原本 `vae/outputs/diffusion_compare/{baseline,pareidolia}/`(gitignore・再生成可能)。各 ID の `<id>_compare.png`(input | α=0 | α=4 | α=8 | α=12)・`<id>_smile.png`・`_overview.png`。
+
+## 9. pretrained_ae — 事前学習オートエンコーダ(SD-VAE)を土台に
+
+- **狙い**: これまでのボケの原因は「VAE という手法族」ではなく「**画像を描く decoder をスクラッチ・小データで学習**」した点、という仮説を検証する。Diffusion トラックがシャープなのは笑顔を LoRA で少し足すだけで **SD-VAE(画像↔潜在の autoencoder)は事前学習済み・凍結**だから(`diffusion/configs/train_lora.yaml`)。同じ土台を VAE 側でも使い、潜在で笑顔方向を操作する。実装: [experiments/pretrained_ae/](../experiments/pretrained_ae/)。
+- **条件**: **`stabilityai/sd-vae-ft-mse` を凍結**、512px(潜在 4×64×64)。笑顔方向は同じ CelebA-HQ 男女別ペア(各500枚)から算出(`proj_std≈118`)。編集 `z=encode(x); decode(z+α·proj_std·direction)`、α ラダー `0 1 2 3`。評価は diffusion_compare と同一10 ID。
+- **結果**: **α=0 の再構成が完全にシャープ**で物体のテクスチャ・輪郭・色を忠実に保持(スクラッチ版は α=0 で既にボケ)。α を上げると **物体を保ったまま笑った口(歯)が局所的に宿り**、ワッフル/蒸しパン/木目などがそれぞれの見た目のまま笑顔化。**全体が人間に置換されない**(§8 スクラッチ版とは対照的)。→ 仮説どおり、事前学習 decoder を土台にすれば VAE 流の潜在編集でも「シャープ＋物体保存」が両立する。
+- **在処**: 原本 `vae/outputs/pretrained_ae/compare/`(gitignore・再生成可能)。方向 `vae/outputs/pretrained_ae/smile_direction.pt`。
+- **含意(比較の正確な位置づけ)**: 3手法比較で見えた差は「VAE vs Diffusion」ではなく、**事前学習の土台/凍結された事前学習 decoder の有無**が支配的。この実験はその交絡を切り分けるデータ点。
 
 ---
 

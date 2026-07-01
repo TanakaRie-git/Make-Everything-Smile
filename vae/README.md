@@ -17,12 +17,13 @@ uv sync          # PyTorch は CUDA 12.4 ホイール (pyproject.toml の index 
 学習・編集の共有コアは `src/smilevae`(下記)。両実験はこの同じ環境・同じ学習済み
 モデルを使う。
 
-## 2つの実験
+## 実験
 
 | 実験 | 中身 | 手順 |
 |---|---|---|
 | **[experiments/objects/](experiments/objects/)** | 本編。物体(Tiny ImageNet / ImageNet 系)へ弱/中/強で笑顔を付与し、コンタクトシートで比較 | [experiments/objects/README.md](experiments/objects/README.md) |
 | **[experiments/diffusion_compare/](experiments/diffusion_compare/)** | Diffusion トラックと**同一の FacesInThings crop・同一プロトコル**(scale ラダー)で笑顔付与を再現し、手法間比較する | [experiments/diffusion_compare/README.md](experiments/diffusion_compare/README.md) |
+| **[experiments/pretrained_ae/](experiments/pretrained_ae/)** | スクラッチ VAE-GAN の代わりに**事前学習 SD-VAE を土台**にして潜在で笑顔方向を操作。シャープさ・物体保存が両立(diffusion のシャープさと同じ原理) | [experiments/pretrained_ae/README.md](experiments/pretrained_ae/README.md) |
 
 ## 共有コアの構成
 
