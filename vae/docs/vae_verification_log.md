@@ -23,6 +23,7 @@
 | 5 | pareidolia512 (+Pareidolia) | 512 | 空間16×16×64 | FiT追加学習 | FiT方向は作れるが再構成精度が限界 |
 | 6 | blend_demo | 512 | — | 物体保存(ピクセル合成) | 物体をシャープに保てる |
 | 7 | fruit_demo | 512 | — | 単一物体への憑依 | 単一果物で笑顔が宿る(本命作例) |
+| 8 | diffusion_compare | 512 | 空間16×16×64 | Diffusionと同一入力で比較 | 同一 crop で object→人間笑顔の連続遷移を再現 |
 
 ---
 
@@ -83,6 +84,14 @@
 
 ![fruit lemons](assets/vae/fruit_lemons.jpg)
 ![fruit apples](assets/vae/fruit_apples.jpg)
+
+## 8. diffusion_compare — Diffusion トラックとの同一条件比較
+
+- **狙い**: Diffusion トラックが笑顔化した **FacesInThings のパレイドリア crop と同一 ID・同一プロトコル**(scale ラダー)で VAE-GAN の潜在編集を回し、手法間で並べて比較する。実装: [experiments/diffusion_compare/](../experiments/diffusion_compare/)(共有コア `smilevae` を再利用、追加学習なし)。
+- **条件**: 共通10 ID(diffの `outputs/` compare 出力と crop キャッシュの積集合、[eval_ids.txt](../experiments/diffusion_compare/eval_ids.txt))。2条件とも **CelebA-HQ 笑顔方向**で揃え(§0.2 は学習データだけ変える)、α ラダー `0 4 8 12`。pareidolia512 用の笑顔方向は本比較のため新規算出(`proj_std≈21.1`)。
+- **結果**: **両条件とも α を上げると object → 人間の笑顔へ連続遷移**(パレイドリア画像がそのまま人間顔になるのは高 α 側の想定結果)。Baseline(hq512)は年配男性寄り、+Pareidolia(pareidolia512)は別の笑顔顔＋歯の見え方が変化。crop が顔枠なので α=4 で既に顔が支配的、物体保存は両者とも弱い。全域で VAE 特有のボケ(diffusion のシャープさとの対比が比較の主眼)。
+- **注意**: `fit_direction`(FiT-happy 方向)は pareidolia512 では **α≥4 で格子状ノイズに崩壊**(proj_std≈34 で過剰に押すため)。使う場合は α を `0 1 2 3` 程度に絞る。
+- **在処**: 原本 `vae/outputs/diffusion_compare/{baseline,pareidolia}/`(gitignore・再生成可能)。各 ID の `<id>_compare.png`(input | α=0 | α=4 | α=8 | α=12)・`<id>_smile.png`・`_overview.png`。
 
 ---
 
