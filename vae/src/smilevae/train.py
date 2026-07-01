@@ -1,7 +1,7 @@
 """VAE-GAN training (Larsen et al. 2016 style).
 
 Usage:
-    python -m smilevae.train configs/smoke64.yaml
+    python -m smilevae.train experiments/objects/configs/smoke64.yaml
 
 The Baseline / +Pareidolia conditions differ only in `data_dirs` (plan §2.3);
 everything else comes from the same config schema.
