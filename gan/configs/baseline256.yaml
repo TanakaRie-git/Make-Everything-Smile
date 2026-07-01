@@ -11,8 +11,8 @@ max_channels: 512
 n_res: 6
 style_dim: 128
 batch_size: 8
-lr_g: 2e-4
-lr_d: 1e-4
+lr_g: 2.0e-4
+lr_d: 1.0e-4
 lambda_cls: 1.0
 lambda_rec: 10.0
 lambda_cyc: 10.0
@@ -29,5 +29,7 @@ neutral_dirs:
   - data/raw/celeba_hq/neutral_male
   - data/raw/celeba_hq/neutral_female
 object_dirs:
-  - data/processed/objects
+  # data/processed/objects は共通キュレーション済みセット（未作成時は下記で代用）
+  # HQ代替: uv run scripts/download_objects_hq.py --out data/raw/objects_hq --max-side 600
+  - data/raw/objects_smoke
 out_dir: outputs/baseline256_gan
