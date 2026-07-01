@@ -71,9 +71,29 @@ crop は diffusion と同一(`diffusion/data/cache/facesinthings_crops/` を `da
 - スクラッチ版(`0 4 8 12`)とは効く α の範囲が違う。
 - **残る差**: VAE は潜在に一律方向を足すため、`fit_direction` では α 増で**全体が暖色に寄る
   色ドリフト**が出る(happy 群の色偏り)。Diffusion は画像条件つきで空間的に必要箇所だけ
-  編集するため色ドリフトが出ない。「グローバル方向 vs 画像条件つき編集」の本質差で、
-  ドメインを揃えても完全一致はしない。緩和策: `smilevae.edit` の `--feature-only`
-  (方向の空間平均=一律成分を除去)相当、口領域限定、色正規化など。
+  編集するため色ドリフトが出ない。「グローバル方向 vs 画像条件つき編集」の本質差。
+
+## 色ドリフトの抑制(笑顔だけ残す)
+
+`compare_facesinthings.py` に2つの抑制オプションを用意:
+
+| オプション | 効果 |
+|---|---|
+| `--feature-only` | 方向の空間平均(=全体の色/トーンを一律に押す成分)を除去。局所的な表情構造だけ残す。除去分だけ効きが弱まるので α を上げる(例 `0 2 4 6`)。 |
+| `--keep-color` | decode 後に **輝度は編集後・色相/彩度は入力**へ戻す(YCbCr合成)。色ドリフトをほぼ完全に打ち消す。**推奨**。 |
+
+```bash
+# 推奨: 色を保ったまま笑顔だけ乗せる
+uv run python experiments/pretrained_ae/compare_facesinthings.py \
+  --direction outputs/pretrained_ae/fit_direction.pt \
+  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --out-dir outputs/pretrained_ae/compare_fit_kc --scales 0 1 2 3 --keep-color
+```
+
+**結果**: `--keep-color`(または `--feature-only --keep-color`)で色ドリフトが消え、
+**物体は元の色・形のまま、自分の口が笑みのカーブになる**(ワッフル/ポテト/蒸しパン等で
+口角が上がる)。「物体自身の顔を笑わせる」= Diffusion のタスク定義に最も近い出力。
+原本: `outputs/pretrained_ae/compare_fit_kc/`(keep-color)/ `compare_fit_both/`(両方)。
 
 ## 依存
 

@@ -22,6 +22,21 @@ from smilevae.edit import to_pil, make_sheet          # 描画は共有ヘルパ
 from sdvae import load_sdvae, encode, decode
 
 
+def keep_input_color(edited: torch.Tensor, inp: torch.Tensor) -> torch.Tensor:
+    """編集後の輝度(Y)は残し、色差(Cb/Cr)は入力から取る。全体の色ドリフトを
+    decode 後に打ち消す(笑顔の陰影・歯の明るさは輝度側なので保たれる)。入出力は
+    (C,H,W) の [-1,1]。"""
+    e = edited * 0.5 + 0.5
+    i = inp * 0.5 + 0.5
+    ey = 0.299 * e[0] + 0.587 * e[1] + 0.114 * e[2]
+    icb = -0.168736 * i[0] - 0.331264 * i[1] + 0.5 * i[2] + 0.5
+    icr = 0.5 * i[0] - 0.418688 * i[1] - 0.081312 * i[2] + 0.5
+    r = ey + 1.402 * (icr - 0.5)
+    g = ey - 0.344136 * (icb - 0.5) - 0.714136 * (icr - 0.5)
+    b = ey + 1.772 * (icb - 0.5)
+    return (torch.stack([r, g, b]).clamp(0, 1) * 2 - 1)
+
+
 def load_eval_ids(path: str | None) -> list[str] | None:
     if path is None:
         return None
@@ -47,12 +62,21 @@ def main() -> None:
                         help="既定は direction 保存時の解像度")
     parser.add_argument("--model", default=None, help="既定は direction 保存時のモデル")
     parser.add_argument("--max-images", type=int, default=None)
+    parser.add_argument("--feature-only", action="store_true",
+                        help="方向の空間平均(=全体の色/トーンを一律に押す成分)を引き、"
+                             "局所的な表情構造だけ残す。色ドリフト抑制。")
+    parser.add_argument("--keep-color", action="store_true",
+                        help="出力の色を入力に合わせ直す(輝度は編集後、色相・彩度は入力)。"
+                             "色ドリフトを decode 後に打ち消す。")
     args = parser.parse_args()
 
     device = "cuda" if torch.cuda.is_available() else "cpu"
     dir_state = torch.load(args.direction, map_location=device, weights_only=False)
     direction = dir_state["direction"].to(device)
     proj_std = dir_state["proj_std"]
+    if args.feature_only:
+        # 空間平均(チャネルごとの一様成分)= 全体の色・トーン押し。これを除去。
+        direction = direction - direction.mean(dim=(1, 2), keepdim=True)
     resolution = args.resolution or dir_state.get("resolution", 512)
     model = args.model or dir_state.get("model", "stabilityai/sd-vae-ft-mse")
 
@@ -85,7 +109,10 @@ def main() -> None:
         z = encode(vae, x)
         tiles = [x[0]]
         for alpha in args.scales:
-            tiles.append(decode(vae, z + alpha * proj_std * direction)[0])
+            edited = decode(vae, z + alpha * proj_std * direction)[0]
+            if args.keep_color:
+                edited = keep_input_color(edited, x[0])
+            tiles.append(edited)
         pil_tiles = [to_pil(t, upscale) for t in tiles]
         make_sheet([(stem, pil_tiles)], col_names).save(out_dir / f"{stem}_compare.png")
         pil_tiles[-1].save(out_dir / f"{stem}_smile.png")

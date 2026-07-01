@@ -102,7 +102,7 @@
 - **在処**: 原本 `vae/outputs/pretrained_ae/compare/`(gitignore・再生成可能)。方向 `vae/outputs/pretrained_ae/smile_direction.pt`。
 - **含意(比較の正確な位置づけ)**: 3手法比較で見えた差は「VAE vs Diffusion」ではなく、**事前学習の土台/凍結された事前学習 decoder の有無**が支配的。この実験はその交絡を切り分けるデータ点。
 - **タスク定義の整合(重要)**: 初期は CelebA 人間の笑顔方向(`smile_direction`)を足していたため「物体に人の顔を重ねる」見え方だった。Diffusion は IP2P の画像条件つき編集で **FacesInThings 自体の neutral→happy**(`build_pairs_pareidria.py`)を学び「物体の顔そのものを笑わせる」。VAE 側も**同じ FacesInThings ドメインから方向を学ぶ**(`fit_direction` = happy−neutral, proj_std≈214)と、物体を保ったまま表情が happy 化し挙動が揃う。原本 `vae/outputs/pretrained_ae/compare_fit/`。
-- **残る差**: `fit_direction` は α 増で暖色ドリフト(happy 群の色偏り)。VAE の「潜在に一律方向を足す」方式と、Diffusion の「画像条件つきで空間的に必要箇所だけ編集」の本質差で、ドメインを揃えても完全一致はしない。緩和策は feature-only / 口領域限定 / 色正規化。
+- **残る差と抑制**: `fit_direction` は α 増で暖色ドリフト(happy 群の色偏り)。VAE の「潜在に一律方向を足す」方式と Diffusion の「画像条件つき編集」の本質差。`compare_facesinthings.py --keep-color`(decode 後に輝度は編集後・色相彩度は入力へ戻す YCbCr 合成)または `--feature-only`(方向の空間平均=一律成分を除去)で抑制できる。**`--keep-color` で色ドリフトが消え、物体は元の色・形のまま自分の口が笑みのカーブになる**ことを確認(= Diffusion のタスク定義に最も近い出力)。原本 `vae/outputs/pretrained_ae/compare_fit_kc/`(keep-color)/ `compare_fit_both/`(両方掛け)。
 
 ---
 
