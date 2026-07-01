@@ -99,7 +99,7 @@ GAN / Diffusion との比較で VAE が担う立ち位置。ここを全編通�
    - VAE の特徴 = **学習後に方向ベクトル1本で、再学習不要・強度連続制御**。
 
 **作例/図:**
-- 顔での笑顔方向の効き(サニティ): [v3_faces_sanity.jpg](assets/vae/v3_faces_sanity.jpg)
+- 顔での笑顔方向の効き(サニティ): [v3_faces_sanity.jpg](assets/vae/old/v3_faces_sanity.jpg)
   → 「方向ベクトルは顔でちゃんと笑顔を作れる」ことをまず示す。
 
 **一言メッセージ:** 編集はベクトル1本・強度は α で無段階。あとは"土台"の質が画質を決める。
@@ -134,15 +134,18 @@ GAN / Diffusion との比較で VAE が担う立ち位置。ここを全編通�
 
 ### 幕1: スクラッチ VAE-GAN の素朴な潜在編集は失敗する
 - **失敗A: 物体が人間の顔に化ける** — グローバル潜在(v2)。
-  作例: [v2_backpack_collapse.jpg](assets/vae/v2_backpack_collapse.jpg)
+  作例: [v2_backpack_collapse.jpg](assets/vae/old/v2_backpack_collapse.jpg)
 - **失敗B: 性別のもつれ**(笑顔強化で女性化)。→ **男女別方向**でキャンセル。
 - → **空間潜在**で物体の構図・色を保持(v3)。強度で「物体のまま→顔がうっすら→顔が支配的」と遷移。
-  作例: [v3_icecream.jpg](assets/vae/v3_icecream.jpg)
+  作例: [v3_icecream.jpg](assets/vae/old/v3_icecream.jpg)
 
 ### 幕2: Diffusion と同一入力で回すと「人間化」がはっきり出る
 - スクラッチ VAE-GAN を Diffusion と同じ FacesInThings crop で編集すると、
   α を上げると **物体 → 人間の笑顔が支配的** に(顔枠 crop なので早く人間化)。
-  作例(推奨: assets へ書き出し): `outputs/diffusion_compare/baseline/_overview.png`
+  作例(ワッフル、列 = input | α=0 | α=4 | α=8 | α=12):
+  [cmp_scratch_humanize.jpg](assets/vae/cmp_scratch_humanize.jpg)
+
+  ![scratch humanize](assets/vae/cmp_scratch_humanize.jpg)
 - **Diffusion は同じ入力で「物体の顔そのものを笑わせる」**(人間化しない)。
   → この差が「なぜ VAE は不自然に見えるか」の出発点。
 
@@ -151,7 +154,10 @@ GAN / Diffusion との比較で VAE が担う立ち位置。ここを全編通�
 - **事前学習 SD-VAE を土台**にし、同じ潜在方向演算を回すと:
   - **α=0(再構成)が完全にシャープ**。物体のテクスチャ・輪郭・色を忠実に保持。
   - 物体を保ったまま笑顔が宿る。
-  作例(推奨: assets へ): `outputs/pretrained_ae/compare/_overview.png`
+  作例(同じワッフル、SD-VAE 土台。α=0 のシャープさに注目):
+  [cmp_pretrained_sharp.jpg](assets/vae/cmp_pretrained_sharp.jpg)
+
+  ![pretrained sharp](assets/vae/cmp_pretrained_sharp.jpg)
 - → **「画質の弱点は VAE 手法族でなく土台の問題」を実証**。Diffusion がシャープなのも同じ理由
   (Diffusion も画像を描く VAE は事前学習・凍結)。
 
@@ -160,15 +166,20 @@ GAN / Diffusion との比較で VAE が担う立ち位置。ここを全編通�
   → 人の顔を重ねるのでなく、**物体自身の口が笑みのカーブ**になる。
 - 残課題「暖色ドリフト」(一律ベクトル加算の副作用)を **色保持(`--keep-color`)** で除去。
   → **物体は元の色・形のまま、自分の顔で笑う**。ワッフル/ポテト/蒸しパンで口角が上がる。
-  作例(発表キービジュアル候補・推奨 assets へ):
-  `outputs/pretrained_ae/compare_fit_kc/_overview.png` /
-  `outputs/pretrained_ae/compare_fit_both/000015457_compare.png`(ワッフルの明確な笑み)
+  作例(FiT 方向 + 色保持、列 = input | α=0 | α=1 | α=2 | α=3):
+  [ワッフル](assets/vae/cmp_object_smile_waffle.jpg) /
+  [ポテト](assets/vae/cmp_object_smile_potato.jpg) /
+  [蒸しパン](assets/vae/cmp_object_smile_bun.jpg)。
+  発表キービジュアル(ワッフルの明確な笑み): [cmp_object_smile_keyvis.jpg](assets/vae/cmp_object_smile_keyvis.jpg)
+
+  ![object smile waffle](assets/vae/cmp_object_smile_waffle.jpg)
+  ![object smile keyvis](assets/vae/cmp_object_smile_keyvis.jpg)
 
 ### 参考: スクラッチ版の別解 — ピクセル空間ブレンド(単一・大写し物体)
 - スクラッチ VAE-GAN でも `--blend`(`元画像 + 目口マスク × (decode(z+d)−decode(z))`)で
   物体のシャープな画素を保ち笑顔差分だけ重ねると、単一果物で笑顔が宿る。
-  作例: [blend_gas_pump.jpg](assets/vae/blend_gas_pump.jpg) /
-  [fruit_lemons.jpg](assets/vae/fruit_lemons.jpg)
+  作例: [blend_gas_pump.jpg](assets/vae/old/blend_gas_pump.jpg) /
+  [fruit_lemons.jpg](assets/vae/old/fruit_lemons.jpg)
 - ただし本命は幕3・幕4(事前学習土台)。ブレンドは「土台を替えられない時の回避策」と位置づける。
 
 **一言メッセージ:** 制御(強度・方向)は完全に効く。画質と物体保存は"土台"で決まり、
@@ -247,17 +258,17 @@ attention に **LoRA rank8** を足し、FacesInThings neutral→happy(+CelebA)�
 
 | 使いどころ | 画像 | 見せたいこと |
 |---|---|---|
-| 手法概要(方向が効く証拠) | [v3_faces_sanity.jpg](assets/vae/v3_faces_sanity.jpg) | 顔で笑顔方向が機能 |
-| 失敗A(物体崩壊) | [v2_backpack_collapse.jpg](assets/vae/v2_backpack_collapse.jpg) | グローバル潜在の限界 |
-| 対策(強度遷移) | [v3_icecream.jpg](assets/vae/v3_icecream.jpg) | α で連続制御 |
-| 幕2: 人間化(スクラッチ) | `outputs/diffusion_compare/baseline/_overview.png` ※assetsへ | 同一入力で人間に化ける |
-| 幕3: 事前学習土台で鮮明化 | `outputs/pretrained_ae/compare/_overview.png` ※assetsへ | 弱点は土台の問題 |
-| 幕4: 物体自身が笑う(色保持) | `outputs/pretrained_ae/compare_fit_kc/_overview.png` ※assetsへ | Diffusion と同じ土俵 |
-| 幕4: キービジュアル | `outputs/pretrained_ae/compare_fit_both/000015457_compare.png` ※assetsへ | ワッフルの明確な笑み |
-| 参考: ブレンド/果物 | [blend_gas_pump.jpg](assets/vae/blend_gas_pump.jpg) / [fruit_lemons.jpg](assets/vae/fruit_lemons.jpg) | スクラッチ版の別解 |
+| 手法概要(方向が効く証拠) | [v3_faces_sanity.jpg](assets/vae/old/v3_faces_sanity.jpg) | 顔で笑顔方向が機能 |
+| 失敗A(物体崩壊) | [v2_backpack_collapse.jpg](assets/vae/old/v2_backpack_collapse.jpg) | グローバル潜在の限界 |
+| 対策(強度遷移) | [v3_icecream.jpg](assets/vae/old/v3_icecream.jpg) | α で連続制御 |
+| 幕2: 人間化(スクラッチ) | [cmp_scratch_humanize.jpg](assets/vae/cmp_scratch_humanize.jpg) | 同一入力で人間に化ける |
+| 幕3: 事前学習土台で鮮明化 | [cmp_pretrained_sharp.jpg](assets/vae/cmp_pretrained_sharp.jpg) | 弱点は土台の問題 |
+| 幕4: 物体自身が笑う(色保持) | [cmp_object_smile_waffle.jpg](assets/vae/cmp_object_smile_waffle.jpg) / [potato](assets/vae/cmp_object_smile_potato.jpg) / [bun](assets/vae/cmp_object_smile_bun.jpg) | Diffusion と同じ土俵 |
+| 幕4: キービジュアル | [cmp_object_smile_keyvis.jpg](assets/vae/cmp_object_smile_keyvis.jpg) | ワッフルの明確な笑み |
+| 参考: ブレンド/果物 | [blend_gas_pump.jpg](assets/vae/old/blend_gas_pump.jpg) / [fruit_lemons.jpg](assets/vae/old/fruit_lemons.jpg) | スクラッチ版の別解 |
 
-> ※印は今回の新規実験の出力(`vae/outputs/` 配下・gitignore)。発表前に代表フレームを
-> `docs/assets/vae/` へ書き出して貼る。
+> 幕2〜幕4 の画像は今回の新規実験の代表フレーム(`vae/outputs/` の各 `<id>_compare.png` から
+> `docs/assets/vae/` へ書き出したもの)。旧スクラッチ手法の作例は `assets/vae/old/` に格納。
 
 ## 付録: 発表で必ず言い切る3点
 
