@@ -1,0 +1,7 @@
+variant,n,LPIPS↓,SSIM↑,CLIPimg↑,CLIPsmile_out↑,CLIPsmile_Δ↑
+scratch_baseline,10,0.73696,0.35489,0.66524,-0.02154,-0.02563
+sdvae_celeba_ladder,10,0.28587,0.74839,0.76827,0.01103,0.00695
+sdvae_fit_kc,10,0.16904,0.78868,0.92370,-0.00518,-0.00927
+sdvae_cascade,10,0.44791,0.59739,0.71861,0.01097,0.00688
+sdvae_low_celeba_kc,10,0.10447,0.88238,0.91317,-0.00333,-0.00742
+sdvae_low_celeba_aligned,10,0.09081,0.88557,0.94493,0.00077,-0.00522

@@ -15,6 +15,9 @@ dependencies = [
     "nltk>=3.9.4",
     "diffusers>=0.38.0",
     "safetensors>=0.8.0",
+    "lpips>=0.1.4",
+    "torchmetrics>=1.9.0",
+    "open-clip-torch>=3.3.0",
 ]
 
 [build-system]
