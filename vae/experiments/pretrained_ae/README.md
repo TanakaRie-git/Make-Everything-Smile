@@ -137,6 +137,29 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
 **知見**: 低α(≲1.5)+色保持で「同じ顔」収束は消え、各物体が個性を保ったまま口元に笑みが出る。
 強い笑顔がほしければ α を上げる/カスケードする(ただし人間顔に収束)。個体保存を最優先するなら低α。
 
+## 「笑顔が同じ位置に載る」対策(1): 入力アライン
+
+笑顔方向は整列済み CelebA から作った**固定の空間マップ**なので、笑顔が毎回フレームの
+同じ位置(中央・口の行)に出る。対策として入力側を canonical フレームに揃える。
+`align_crop.py` が FacesInThings の顔 box を使い、**顔が frame の約62%を占め中央に来る**よう
+正規化クロップする(ランドマークは無いので box 中心・スケールのみ)。
+
+```bash
+uv run python experiments/pretrained_ae/align_crop.py \
+  --meta data/raw/faces_in_things/FacesInThings/metadata.csv \
+  --images data/raw/faces_in_things/FacesInThings/images \
+  --ids experiments/diffusion_compare/eval_ids.txt \
+  --out-dir data/diffusion_compare/inputs_aligned
+# 以後 --input-dir data/diffusion_compare/inputs_aligned で編集
+```
+
+**実証結果**(`outputs/pretrained_ae/low_celeba_kc_aligned/`): アライン後は各物体の顔が
+同じスケール・位置に揃い、**笑顔差分が顔領域の下部(≈口)に一貫して載る**ようになる
+(入力が学習分布に近づき編集が顔に乗りやすい)。**ただし笑顔は依然フレーム内の同じ絶対位置に
+出る**——アラインは「顔をその位置へ合わせる」ことでズレを減らすだけで、各物体の実際の口位置への
+追従はしない(それには無いランドマーク=(2) か 条件付き編集=(3) が必要)。**位置適応は線形潜在
+編集の枠内では原理的に頭打ち**、という手法特性の裏づけ。
+
 ## 依存
 
 `diffusers` / `safetensors`(共有 `pyproject.toml` に追加済み)。SD-VAE 重み ~335MB を

@@ -14,6 +14,7 @@
 | [sdvae_low_celeba_kc_overview.jpg](sdvae_low_celeba_kc_overview.jpg) | pretrained_ae | CelebA 方向・低α・色保持。**個体を保ち控えめに笑む(推奨)** | 0 / 0.5 / 1 / 1.5 |
 | [sdvae_low_celeba_feat_kc_overview.jpg](sdvae_low_celeba_feat_kc_overview.jpg) | pretrained_ae | 上 + feature-only | 0 / 0.5 / 1 / 1.5 |
 | [sdvae_low_fit_kc_overview.jpg](sdvae_low_fit_kc_overview.jpg) | pretrained_ae | FiT 方向・低α・色保持。最も控えめ | 0 / 0.5 / 1 / 1.5 |
+| [sdvae_low_celeba_kc_ALIGNED_overview.jpg](sdvae_low_celeba_kc_ALIGNED_overview.jpg) | pretrained_ae | 対策(1): 入力を顔 box で canonical フレームにアライン。笑顔が顔領域下部に一貫して載る(位置は依然フレーム固定) | 0 / 0.5 / 1 / 1.5 |
 
 > 注: 学習済みチェックポイント(`*.pt`、各約108MB)は容量のため追跡しない。
 > 全結果を再生成するには各実験 README のコマンドを実行する。
