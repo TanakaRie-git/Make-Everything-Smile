@@ -95,6 +95,27 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
 口角が上がる)。「物体自身の顔を笑わせる」= Diffusion のタスク定義に最も近い出力。
 原本: `outputs/pretrained_ae/compare_fit_kc/`(keep-color)/ `compare_fit_both/`(両方)。
 
+## 2段カスケード(顔っぽくしてから人間の笑顔ポリシー)
+
+「一度顔っぽくした画像を、改めて人間の笑顔ポリシー(CelebA 方向)に通せば、もう顔に
+近いので笑顔が作りやすいのでは」という仮説の検証。`cascade_smile.py` が
+**生成画像を decode→再encode して次段に渡す**真のカスケードを行う:
+```
+face = decode(encode(x) + α1·d1)   # Stage1: 顔っぽい画像
+out  = decode(encode(face) + α2·d2) # Stage2: その画像に人間の笑顔方向を α ラダーで
+```
+```bash
+uv run python experiments/pretrained_ae/cascade_smile.py \
+  --stage1-direction outputs/pretrained_ae/smile_direction.pt --stage1-alpha 2 \
+  --stage2-direction outputs/pretrained_ae/smile_direction.pt --stage2-scales 0 1 2 3 \
+  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --out-dir outputs/pretrained_ae/cascade
+```
+**結果**: 仮説どおり、顔化後に笑顔方向を足すと **α=2〜3 で歯を見せた明確な笑顔**になり、
+素の物体を直接笑わせるより笑顔が強く・くっきり出る。ただし**物体は人間の顔になりきる**
+(物体保存は失う)。→ `fit_direction`+`--keep-color`(物体を保ち控えめに笑う)と対の関係で、
+**「物体を残す」↔「笑顔を強くする」の2極**を成す。原本 `outputs/pretrained_ae/cascade/`。
+
 ## 依存
 
 `diffusers` / `safetensors`(共有 `pyproject.toml` に追加済み)。SD-VAE 重み ~335MB を
