@@ -101,6 +101,8 @@
 - **結果**: **α=0 の再構成が完全にシャープ**で物体のテクスチャ・輪郭・色を忠実に保持(スクラッチ版は α=0 で既にボケ)。α を上げると **物体を保ったまま笑った口(歯)が局所的に宿り**、ワッフル/蒸しパン/木目などがそれぞれの見た目のまま笑顔化。**全体が人間に置換されない**(§8 スクラッチ版とは対照的)。→ 仮説どおり、事前学習 decoder を土台にすれば VAE 流の潜在編集でも「シャープ＋物体保存」が両立する。
 - **在処**: 原本 `vae/outputs/pretrained_ae/compare/`(gitignore・再生成可能)。方向 `vae/outputs/pretrained_ae/smile_direction.pt`。
 - **含意(比較の正確な位置づけ)**: 3手法比較で見えた差は「VAE vs Diffusion」ではなく、**事前学習の土台/凍結された事前学習 decoder の有無**が支配的。この実験はその交絡を切り分けるデータ点。
+- **タスク定義の整合(重要)**: 初期は CelebA 人間の笑顔方向(`smile_direction`)を足していたため「物体に人の顔を重ねる」見え方だった。Diffusion は IP2P の画像条件つき編集で **FacesInThings 自体の neutral→happy**(`build_pairs_pareidria.py`)を学び「物体の顔そのものを笑わせる」。VAE 側も**同じ FacesInThings ドメインから方向を学ぶ**(`fit_direction` = happy−neutral, proj_std≈214)と、物体を保ったまま表情が happy 化し挙動が揃う。原本 `vae/outputs/pretrained_ae/compare_fit/`。
+- **残る差**: `fit_direction` は α 増で暖色ドリフト(happy 群の色偏り)。VAE の「潜在に一律方向を足す」方式と、Diffusion の「画像条件つきで空間的に必要箇所だけ編集」の本質差で、ドメインを揃えても完全一致はしない。緩和策は feature-only / 口領域限定 / 色正規化。
 
 ---
 

@@ -44,10 +44,36 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
   それぞれの見た目のまま笑顔化。全体が人間に置換されない(diffusion_compare のスクラッチ版とは対照的)。
 - α を上げる(2〜3)と目・口の顔構造が強まる。0〜3 が使いやすい(proj_std≈118)。
 
-## α とスケールの目安
+## 笑顔方向の選択(何から「笑顔」を学ぶか) — Diffusion との整合
 
-α は proj_std 単位。SD-VAE 潜在は proj_std が大きい(≈118)ので、`0 1 2 3` 程度で十分効く。
-スクラッチ版(`0 4 8 12`)とは効く α の範囲が違う点に注意。
+Diffusion の pareidria policy は **FacesInThings 自体の neutral→happy** を学習し、IP2P の
+画像条件つき編集で「物体の顔そのものを笑わせる」(`diffusion/data/build_pairs_pareidria.py`,
+`diffusion/scripts/infer.py`)。VAE 側も**同じドメインから方向を学ぶ**と挙動が揃う:
+
+| 方向ファイル | 学習ソース | 見え方 |
+|---|---|---|
+| `smile_direction.pt` | **CelebA 人間の笑顔** | 人の顔・歯が"重なる"(overlay 的) |
+| `fit_direction.pt` | **FacesInThings neutral→happy**(diffusion と同ドメイン) | **物体のまま**表情が happy 化 |
+
+`fit_direction` の作り方:
+```bash
+uv run python experiments/pretrained_ae/build_direction.py \
+  --pair data/facesinthings_crops/happy data/facesinthings_crops/neutral \
+  --out outputs/pretrained_ae/fit_direction.pt --resolution 512 --limit-per-folder 800
+# 編集: --direction outputs/pretrained_ae/fit_direction.pt --scales 0 1 2 3
+```
+crop は diffusion と同一(`diffusion/data/cache/facesinthings_crops/` を `data/facesinthings_crops/` にコピー)。
+
+## α とスケールの目安・既知の差
+
+- α は proj_std 単位。`smile_direction`(proj_std≈118)は `0 1 2 3`、`fit_direction`
+  (proj_std≈214)は `0 1 2 3` で暖色ドリフトが強く出るので小さめ推奨。
+- スクラッチ版(`0 4 8 12`)とは効く α の範囲が違う。
+- **残る差**: VAE は潜在に一律方向を足すため、`fit_direction` では α 増で**全体が暖色に寄る
+  色ドリフト**が出る(happy 群の色偏り)。Diffusion は画像条件つきで空間的に必要箇所だけ
+  編集するため色ドリフトが出ない。「グローバル方向 vs 画像条件つき編集」の本質差で、
+  ドメインを揃えても完全一致はしない。緩和策: `smilevae.edit` の `--feature-only`
+  (方向の空間平均=一律成分を除去)相当、口領域限定、色正規化など。
 
 ## 依存
 
