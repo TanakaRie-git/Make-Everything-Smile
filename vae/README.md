@@ -1,43 +1,62 @@
-# VAE トラック — VAE-GAN による物体への笑顔付与
+# VAE トラック — 潜在編集による物体への笑顔付与
 
-計画書([docs/make_everything_smile_plan.md](docs/make_everything_smile_plan.md))の
-VAE 担当分。VAE-GAN (Larsen et al. 2016) を CelebA(笑顔/中立)で学習し、潜在空間の
-**笑顔方向ベクトル**(`z + α·direction`)で画像を編集する。これは DCGAN 由来の潜在
-ベクトル演算であり、Diffusion トラックの Concept Slider と同型の発想。
+計画書([docs/make_everything_smile_plan.md](docs/make_everything_smile_plan.md))の VAE 担当分。
+「顔ではない普通の物体」に、潜在空間の **笑顔方向ベクトル**(`z + α·direction`)を足して
+笑った顔を宿す。これは DCGAN 由来の潜在ベクトル演算で、Diffusion トラックの Concept Slider と
+同型の発想。
 
-> 📋 これまでの検証(条件・結果・在処)は **[検証ログ](docs/vae_verification_log.md)** にまとめている。
+> 📋 検証の時系列(条件・結果・在処)は **[検証ログ](docs/vae_verification_log.md)** に、
+> 発表用の説明は [docs/vae_presentation_content.md](docs/vae_presentation_content.md) にまとめている。
 
-## セットアップ(共有 uv 環境)
+## 現行の手法(本編): 事前学習 SD-VAE を土台に
+
+当初はスクラッチ学習の **VAE-GAN** を使ったが、再構成が常にボケた(→ [old/](old/))。
+原因は手法族ではなく **画像を描く decoder をゼロから小データで学習**した点にある。
+Diffusion がシャープなのは、笑顔を LoRA で少し足すだけで **画像↔潜在の autoencoder
+(SD-VAE)が事前学習済み・凍結**だから。そこで VAE 側も同じ土台へ載せ替えた:
+
+**事前学習 SD-VAE(`stabilityai/sd-vae-ft-mse`)を凍結し、その潜在で笑顔方向を操作する。**
+→ α=0 の再構成が完全にシャープになり、物体を保ったまま笑顔が宿る。
+
+手順・結果は **[experiments/pretrained_ae/README.md](experiments/pretrained_ae/README.md)**。
+
+## セットアップ(uv 環境)
 
 ```bash
 cd vae
-uv sync          # PyTorch は CUDA 12.4 ホイール (pyproject.toml の index 設定)
+uv sync          # PyTorch は CUDA 12.4 ホイール(pyproject.toml の index 設定)
 ```
 
-学習・編集の共有コアは `src/smilevae`(下記)。両実験はこの同じ環境・同じ学習済み
-モデルを使う。
-
-## 実験
-
-| 実験 | 中身 | 手順 |
-|---|---|---|
-| **[experiments/objects/](experiments/objects/)** | 本編。物体(Tiny ImageNet / ImageNet 系)へ弱/中/強で笑顔を付与し、コンタクトシートで比較 | [experiments/objects/README.md](experiments/objects/README.md) |
-| **[experiments/diffusion_compare/](experiments/diffusion_compare/)** | Diffusion トラックと**同一の FacesInThings crop・同一プロトコル**(scale ラダー)で笑顔付与を再現し、手法間比較する | [experiments/diffusion_compare/README.md](experiments/diffusion_compare/README.md) |
-| **[experiments/pretrained_ae/](experiments/pretrained_ae/)** | スクラッチ VAE-GAN の代わりに**事前学習 SD-VAE を土台**にして潜在で笑顔方向を操作。シャープさ・物体保存が両立(diffusion のシャープさと同じ原理) | [experiments/pretrained_ae/README.md](experiments/pretrained_ae/README.md) |
-
-## 共有コアの構成
+## 構成
 
 ```
-src/smilevae/       # 両実験が共有するモデル/学習/編集コア
-  models.py     # Encoder / Decoder / Discriminator(解像度可変)
-                #   latent_size=0: グローバル潜在ベクトル(物体が顔に崩壊しやすい)
-                #   latent_size≥2: 空間潜在マップ(物体の構図を保持。既定)
+src/smilevae/       # 現行手法が使う共有コア(slim)
   data.py       # 白パディング正方形化 + リサイズ(FiT と作法統一、計画 §2.2)
-  train.py      # VAE-GAN 学習(D: real/recon/prior、E+G: KL+特徴量再構成+adv)
-  direction.py  # 笑顔方向 = normalize(平均_pair(mean(mu_smile) - mean(mu_neutral)))
-  edit.py       # z + α·proj_std·direction をデコード(α = 弱/中/強)
+  viz.py        # コンタクトシート描画ヘルパ(to_pil / make_sheet)
+experiments/
+  pretrained_ae/  # ★本編。凍結 SD-VAE の潜在で笑顔方向を操作(シャープ+物体保存)
+  eval.py         # 軽量評価(LPIPS/SSIM/CLIP)
+  eval_ids.txt    # 全手法共通の固定評価 ID(diffusion と同一 crop の 10 枚)
 scripts/            # データ取得(CelebA / CelebA-HQ / Faces in Things / Tiny ImageNet)
-experiments/        # 実験ごとの config・手順・出力(上表)
-docs/               # 計画書・検証ログ
+docs/               # 計画書・検証ログ・発表用(テキスト)
+assets/             # 掲載画像(docs から分離)。current/ old/ results/ に整理(下記)
+old/                # 変更前のスクラッチ VAE-GAN 一式(アーカイブ、下記)
 data/ outputs/      # gitignore 済み・再生成可能
 ```
+
+## old/ — 変更前のスクラッチ VAE-GAN(アーカイブ)
+
+diffusion に手法を揃える前の実装。スクラッチ VAE-GAN の学習コア・本編実験
+(`objects/`)・diffusion 比較(`diffusion_compare/`)を凍結保存している。置き換えの
+経緯と実行方法は **[old/README.md](old/README.md)**。当時の代表画像は
+[assets/old/](assets/old/)。
+
+## assets/ — 掲載画像
+
+`docs/` はテキストのみとし、画像は `assets/` に分離して3つに整理した(索引 [assets/README.md](assets/README.md)):
+
+| フォルダ | 中身 |
+|---|---|
+| [assets/current/](assets/current/) | 現行 SD-VAE 手法の代表作例・発表キービジュアル(`cmp_*`) |
+| [assets/old/](assets/old/) | 変更前スクラッチ VAE-GAN の作例 |
+| [assets/results/](assets/results/) | 全 ID overview シート + 評価メトリクス([results/README.md](assets/results/README.md)) |

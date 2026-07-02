@@ -11,7 +11,7 @@
     uv run python experiments/pretrained_ae/align_crop.py \
         --meta data/raw/faces_in_things/FacesInThings/metadata.csv \
         --images data/raw/faces_in_things/FacesInThings/images \
-        --ids experiments/diffusion_compare/eval_ids.txt \
+        --ids experiments/eval_ids.txt \
         --out-dir data/diffusion_compare/inputs_aligned
 """
 

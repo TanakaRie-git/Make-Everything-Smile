@@ -2,7 +2,7 @@
 
 各実験の全10 ID コンタクトシート(共通の FacesInThings crop)。原本 PNG は
 `vae/outputs/`(gitignore・再生成可能)。ここには表示用に縮小した JPG を追跡している。
-詳細は各実験 README と [検証ログ](../../vae_verification_log.md)。
+詳細は各実験 README と [検証ログ](../../docs/vae_verification_log.md)。
 
 | ファイル | 実験 | 内容 | 列(α ラダー) |
 |---|---|---|---|

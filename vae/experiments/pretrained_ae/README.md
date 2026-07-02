@@ -1,6 +1,6 @@
 # 実験: 事前学習オートエンコーダ(SD-VAE)を土台にした笑顔付与
 
-スクラッチ学習の VAE-GAN([../objects/](../objects/) / [../diffusion_compare/](../diffusion_compare/))は
+スクラッチ学習の VAE-GAN([../../old/objects/](../../old/objects/) / [../../old/diffusion_compare/](../../old/diffusion_compare/))は
 再構成がボケる。原因は手法族ではなく **画像を描く decoder をゼロから小データで学習**して
 いるため。Diffusion トラックがシャープなのは、笑顔を LoRA で少し足すだけで **画像を描く
 VAE(SD の autoencoder)は事前学習済み・凍結**だから(`diffusion/configs/train_lora.yaml`)。
@@ -24,7 +24,7 @@ uv run python experiments/pretrained_ae/build_direction.py \
 uv run python experiments/pretrained_ae/compare_facesinthings.py \
   --direction outputs/pretrained_ae/smile_direction.pt \
   --input-dir data/diffusion_compare/inputs \
-  --ids experiments/diffusion_compare/eval_ids.txt \
+  --ids experiments/eval_ids.txt \
   --out-dir outputs/pretrained_ae/compare --scales 0 1 2 3
 ```
 
@@ -34,7 +34,7 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
 
 - `sdvae.py` — 事前学習 `AutoencoderKL` の load / encode(潜在の平均)/ decode ラッパ(凍結)。
 - `build_direction.py` — CelebA-HQ ペアを SD-VAE で encode し笑顔方向を算出(`smilevae.direction` と同設計)。
-- `compare_facesinthings.py` — 評価 crop を encode → scale ラダーで decode。描画は共有の `smilevae.edit` を再利用。
+- `compare_facesinthings.py` — 評価 crop を encode → scale ラダーで decode。描画は共有の `smilevae.viz` を再利用。
 
 ## 結果(初回ラン、共通10 ID・512px)
 
@@ -86,7 +86,7 @@ crop は diffusion と同一(`diffusion/data/cache/facesinthings_crops/` を `da
 # 推奨: 色を保ったまま笑顔だけ乗せる
 uv run python experiments/pretrained_ae/compare_facesinthings.py \
   --direction outputs/pretrained_ae/fit_direction.pt \
-  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --input-dir data/diffusion_compare/inputs --ids experiments/eval_ids.txt \
   --out-dir outputs/pretrained_ae/compare_fit_kc --scales 0 1 2 3 --keep-color
 ```
 
@@ -108,7 +108,7 @@ out  = decode(encode(face) + α2·d2) # Stage2: その画像に人間の笑顔�
 uv run python experiments/pretrained_ae/cascade_smile.py \
   --stage1-direction outputs/pretrained_ae/smile_direction.pt --stage1-alpha 2 \
   --stage2-direction outputs/pretrained_ae/smile_direction.pt --stage2-scales 0 1 2 3 \
-  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --input-dir data/diffusion_compare/inputs --ids experiments/eval_ids.txt \
   --out-dir outputs/pretrained_ae/cascade
 ```
 **結果**: 仮説どおり、顔化後に笑顔方向を足すと **α=2〜3 で歯を見せた明確な笑顔**になり、
@@ -125,7 +125,7 @@ uv run python experiments/pretrained_ae/cascade_smile.py \
 # 推奨: CelebA 方向・低α・色保持(各物体が別物のまま口元に笑み)
 uv run python experiments/pretrained_ae/compare_facesinthings.py \
   --direction outputs/pretrained_ae/smile_direction.pt --scales 0 0.5 1 1.5 --keep-color \
-  --input-dir data/diffusion_compare/inputs --ids experiments/diffusion_compare/eval_ids.txt \
+  --input-dir data/diffusion_compare/inputs --ids experiments/eval_ids.txt \
   --out-dir outputs/pretrained_ae/low_celeba_kc
 ```
 
@@ -148,7 +148,7 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
 uv run python experiments/pretrained_ae/align_crop.py \
   --meta data/raw/faces_in_things/FacesInThings/metadata.csv \
   --images data/raw/faces_in_things/FacesInThings/images \
-  --ids experiments/diffusion_compare/eval_ids.txt \
+  --ids experiments/eval_ids.txt \
   --out-dir data/diffusion_compare/inputs_aligned
 # 以後 --input-dir data/diffusion_compare/inputs_aligned で編集
 ```

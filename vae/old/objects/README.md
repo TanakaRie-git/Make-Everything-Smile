@@ -1,10 +1,14 @@
-# 実験: 物体への笑顔付与(VAE-GAN 本編)
+# 【アーカイブ】実験: 物体への笑顔付与(スクラッチ VAE-GAN)
 
-VAE トラックの主実験。VAE-GAN (Larsen et al. 2016) を CelebA(笑顔/中立)+ 物体画像で
-学習し、潜在空間の**笑顔方向ベクトル**で物体画像を編集する。計画書 §0〜§3 の VAE 担当分。
+> ⚠️ **これは変更前の旧手法です。** スクラッチ学習した VAE-GAN は再構成がボケる
+> ため、現行の本編は事前学習 SD-VAE を土台にした [experiments/pretrained_ae/](../../experiments/pretrained_ae/)
+> に置き換えた。経緯は [old/README.md](../README.md) を参照。以下は当時の記録として保存する。
 
-共有コア(`src/smilevae`)と uv 環境([../../README.md](../../README.md))を使う。
-コマンドはすべて `cd vae` から実行する想定。
+VAE-GAN (Larsen et al. 2016) を CelebA(笑顔/中立)+ 物体画像で学習し、潜在空間の
+**笑顔方向ベクトル**で物体画像を編集する。計画書 §0〜§3 の VAE 担当分。
+
+このアーカイブ内の scratch パッケージ [old/smilevae/](../smilevae/) を使う
+(`cd vae` から `PYTHONPATH=old` を付けて実行)。
 
 ## データ準備(スモークテスト用)
 
@@ -28,7 +32,7 @@ uv run scripts/download_celeba.py --source celeba-hq --n-per-class 5000 --out da
 
 ```bash
 # 1. VAE-GAN 学習(スモーク: 64px・4000 step・RTX 3070 Ti で十数分)
-uv run python -m smilevae.train experiments/objects/configs/smoke64.yaml
+uv run python -m smilevae.train old/objects/configs/smoke64.yaml
 
 # 2. 潜在空間の笑顔方向を算出(男女別ペアの平均で性別のもつれを軽減)
 uv run python -m smilevae.direction \

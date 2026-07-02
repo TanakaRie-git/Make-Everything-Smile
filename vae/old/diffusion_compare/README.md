@@ -1,4 +1,10 @@
-# 実験: Diffusion トラックとの同一条件比較
+# 【アーカイブ】実験: Diffusion トラックとの同一条件比較(スクラッチ VAE-GAN)
+
+> ⚠️ **これは変更前の旧手法です。** スクラッチ VAE-GAN の再構成のボケが比較の主眼
+> だった記録。現行の diffusion 比較は事前学習 SD-VAE の
+> [experiments/pretrained_ae/](../../experiments/pretrained_ae/) が担う(同じ crop・同じ
+> `experiments/eval_ids.txt`)。経緯は [old/README.md](../README.md)。scratch 実行には
+> [old/smilevae/](../smilevae/) を `PYTHONPATH=old` で使う。
 
 Diffusion トラック(`diffusion/`)は FacesInThings のパレイドリア crop に対し、
 IP2P+LoRA / Concept Slider で笑顔を付与している。本実験は **同じ crop・同じ ID・
@@ -12,7 +18,7 @@ VAE の編集は `z = mu(E(x)); D(z + alpha * proj_std * direction)`。これは
 
 ## 共通入力(固定評価セット)
 
-- [eval_ids.txt](eval_ids.txt) — Diffusion の `outputs/` が compare を出した ID と、
+- [eval_ids.txt](../../experiments/eval_ids.txt) — Diffusion の `outputs/` が compare を出した ID と、
   FacesInThings crop キャッシュの積集合。全手法で同一 ID を使う(計画 §0.3)。
 - crop 本体は `vae/data/diffusion_compare/inputs/`(gitignore 済み)にコピー済み。
   Diffusion 側 `diffusion/data/cache/facesinthings_crops/` と同一ファイル。
@@ -23,11 +29,11 @@ VAE の編集は `z = mu(E(x)); D(z + alpha * proj_std * direction)`。これは
 
 ```bash
 # Baseline(CelebA-HQ + 物体で学習)
-uv run python experiments/diffusion_compare/compare_facesinthings.py \
+uv run python old/diffusion_compare/compare_facesinthings.py \
   --ckpt outputs/hq512/ckpt/last.pt \
   --direction outputs/hq512/smile_direction.pt \
   --input-dir data/diffusion_compare/inputs \
-  --ids experiments/diffusion_compare/eval_ids.txt \
+  --ids experiments/eval_ids.txt \
   --out-dir outputs/diffusion_compare/baseline \
   --scales 0 4 8 12
 
@@ -39,11 +45,11 @@ uv run python experiments/diffusion_compare/compare_facesinthings.py \
 #     --pair data/raw/celeba_hq/smile_male   data/raw/celeba_hq/neutral_male \
 #     --pair data/raw/celeba_hq/smile_female data/raw/celeba_hq/neutral_female \
 #     --out outputs/pareidolia512/smile_direction.pt
-uv run python experiments/diffusion_compare/compare_facesinthings.py \
+uv run python old/diffusion_compare/compare_facesinthings.py \
   --ckpt outputs/pareidolia512/ckpt/last.pt \
   --direction outputs/pareidolia512/smile_direction.pt \
   --input-dir data/diffusion_compare/inputs \
-  --ids experiments/diffusion_compare/eval_ids.txt \
+  --ids experiments/eval_ids.txt \
   --out-dir outputs/diffusion_compare/pareidolia \
   --scales 0 4 8 12
 ```

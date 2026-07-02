@@ -16,11 +16,11 @@ crop を入力に、笑顔化した `<id>_smile.png` と入出力比較 `<id>_co
   +Pareidolia : outputs/pareidolia512/ckpt/last.pt + outputs/pareidolia512/fit_direction.pt
 
 使い方(cd vae から):
-  uv run python experiments/diffusion_compare/compare_facesinthings.py \
+  uv run python old/diffusion_compare/compare_facesinthings.py \
       --ckpt outputs/hq512/ckpt/last.pt \
       --direction outputs/hq512/smile_direction.pt \
       --input-dir data/diffusion_compare/inputs \
-      --ids experiments/diffusion_compare/eval_ids.txt \
+      --ids experiments/eval_ids.txt \
       --out-dir outputs/diffusion_compare/baseline \
       --scales 0 4 8 12
 """

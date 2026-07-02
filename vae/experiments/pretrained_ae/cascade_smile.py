@@ -18,7 +18,7 @@
         --stage1-direction outputs/pretrained_ae/smile_direction.pt --stage1-alpha 2 \
         --stage2-direction outputs/pretrained_ae/smile_direction.pt --stage2-scales 0 1 2 3 \
         --input-dir data/diffusion_compare/inputs \
-        --ids experiments/diffusion_compare/eval_ids.txt \
+        --ids experiments/eval_ids.txt \
         --out-dir outputs/pretrained_ae/cascade
 """
 
@@ -28,7 +28,7 @@ from pathlib import Path
 import torch
 
 from smilevae.data import FlatImageDataset
-from smilevae.edit import to_pil, make_sheet
+from smilevae.viz import to_pil, make_sheet
 from sdvae import load_sdvae, encode, decode
 
 

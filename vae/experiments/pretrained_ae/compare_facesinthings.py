@@ -1,5 +1,5 @@
 """事前学習 SD-VAE を土台に、diffusion_compare と同一入力・同一プロトコルで
-笑顔付与を出力する(スクラッチ VAE-GAN 版 experiments/diffusion_compare/ と対照)。
+笑顔付与を出力する(スクラッチ VAE-GAN 版 old/diffusion_compare/ と対照)。
 
 編集は z = encode(x); decode(z + alpha * proj_std * direction) を scale ラダーで。
 decoder は事前学習・凍結の SD-VAE なので、スクラッチ版より再構成がシャープなはず。
@@ -8,7 +8,7 @@ decoder は事前学習・凍結の SD-VAE なので、スクラッチ版より�
     uv run python experiments/pretrained_ae/compare_facesinthings.py \
         --direction outputs/pretrained_ae/smile_direction.pt \
         --input-dir data/diffusion_compare/inputs \
-        --ids experiments/diffusion_compare/eval_ids.txt \
+        --ids experiments/eval_ids.txt \
         --out-dir outputs/pretrained_ae/compare --scales 0 1 2 3
 """
 
@@ -18,7 +18,7 @@ from pathlib import Path
 import torch
 
 from smilevae.data import FlatImageDataset
-from smilevae.edit import to_pil, make_sheet          # 描画は共有ヘルパを再利用
+from smilevae.viz import to_pil, make_sheet          # 描画は共有ヘルパを再利用
 from sdvae import load_sdvae, encode, decode
 
 
