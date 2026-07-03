@@ -33,8 +33,10 @@ uv run python experiments/pretrained_ae/compare_facesinthings.py \
 ## 構成
 
 - `sdvae.py` — 事前学習 `AutoencoderKL` の load / encode(潜在の平均)/ decode ラッパ(凍結)。
-- `build_direction.py` — CelebA-HQ ペアを SD-VAE で encode し笑顔方向を算出(`smilevae.direction` と同設計)。
+- `build_direction.py` — CelebA-HQ ペアを SD-VAE で encode し笑顔方向を算出(旧 [old/smilevae/direction.py](../../old/smilevae/direction.py) と同設計)。
 - `compare_facesinthings.py` — 評価 crop を encode → scale ラダーで decode。描画は共有の `smilevae.viz` を再利用。
+- `cascade_smile.py` — 2段カスケード(顔化してから人間の笑顔方向、後述)。
+- `align_crop.py` — 入力を canonical フレームへ正規化クロップ(「同じ位置に載る」対策、後述)。
 
 ## 結果(初回ラン、共通10 ID・512px)
 
