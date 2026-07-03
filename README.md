@@ -12,13 +12,13 @@
 | トラック | 場所 | 状態 | アプローチ |
 |---|---|---|---|
 | **VAE** | [vae/](vae/) → **[vae/README.md](vae/README.md)** | ✅ 実装済み | 凍結 SD-VAE の潜在空間に笑顔方向ベクトルを1本引き、係数 α で操作 |
-| **GAN** | `gan/`(予定) | 🚧 他メンバー担当・マージ待ち | 表情を条件とした敵対的生成 |
-| **Diffusion** | `diffusion/`(予定) | 🚧 他メンバー担当・マージ待ち | InstructPix2Pix + LoRA によるテキスト指示編集 |
+| **GAN** | `gan/`(予定) |  | 表情を条件とした敵対的生成 |
+| **Diffusion** | `diffusion/`(予定) |  | InstructPix2Pix + LoRA によるテキスト指示編集 |
 
 評価は3手法共通の固定 10 crop([vae/experiments/eval_ids.txt](vae/experiments/eval_ids.txt))と
 共通の軽量評価スクリプト([vae/experiments/eval.py](vae/experiments/eval.py)、LPIPS/SSIM/CLIP)で行う。
 
-## VAE トラック(実装済み)
+## VAE トラック
 
 **追加学習ゼロ**: 事前学習 SD-VAE を凍結し、潜在に笑顔方向を足すだけ(`decode(encode(x) + α·σ·d)`)。
 スクラッチ学習の VAE-GAN から土台を載せ替えることで、物体保存が LPIPS 0.74 → **0.17** に改善した。
