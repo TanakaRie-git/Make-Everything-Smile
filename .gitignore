@@ -216,3 +216,10 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# data / outputs (re-generatable; live under the vae track)
+/vae/data/
+/vae/outputs/
+
+# Claude 個人設定(チームへは push しない)
+/CLAUDE.md

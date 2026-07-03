@@ -1,0 +1,32 @@
+# +Pareidolia condition (plan §2.3): Baseline data + Faces in Things (happy).
+# Fine-tuned from the Baseline hq512 checkpoint so the decoder learns to render
+# object-textured face cues without paying for another 3h scratch run.
+# FiT-happy is listed 4x to oversample it (1216 -> ~4.9k, ~35% of the pool) so
+# the pareidolia signal is strong enough to be learned, not drowned out.
+resolution: 512
+z_dim: 64
+latent_size: 16
+base_channels: 64
+max_channels: 512
+batch_size: 8
+steps: 15000
+lr: 1.0e-4            # lower LR for fine-tuning
+lr_d: 5.0e-5
+beta_kl: 0.5
+lambda_perc: 0.5
+amp: true
+init_from: outputs/hq512/ckpt/last.pt
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+data_dirs:
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+  - data/raw/objects_hq
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+  - data/raw/faces_in_things/happy
+out_dir: outputs/pareidolia512
