@@ -1,6 +1,25 @@
 # プロジェクト計画書
 ## ただの物体への「笑顔」付与 — VAE/GAN/Diffusion 比較 ＋ パレイドリア学習による自然さ向上の検証
 
+> **📌 実装反映(2026-07-02 更新):** 本書は当初計画。実装の進行で変わった点は本文中に
+> **[実装]** として注記した。VAE トラックで確定した主な差分(経緯は [検証ログ](vae_verification_log.md)):
+> - **VAE の手法**: スクラッチ学習の VAE-GAN は再構成のボケが天井となり [old/](../old/) にアーカイブ。
+>   現行は **事前学習 SD-VAE(`stabilityai/sd-vae-ft-mse`)を凍結し、その潜在で笑顔方向を操作**
+>   ([experiments/pretrained_ae/](../experiments/pretrained_ae/))。
+> - **入力・評価ドメイン**: ImageNet 非生物のフルキュレーションは未実施。評価入力は
+>   **Faces in Things のパレイドリア crop(Diffusion トラックと同一)** に変更。ImageNet 系は
+>   代替セット(Tiny ImageNet / Imagenette / Fruits-30)をスクラッチ期の学習にのみ使用。
+> - **解像度**: 256×256 → **512×512**(Diffusion トラックと統一)。
+> - **評価セット**: 固定100枚 → まず **共通固定 10 ID**([experiments/eval_ids.txt](../experiments/eval_ids.txt))
+>   で軽量評価。100枚化と FID/KID(数百枚必要)は未実施。
+> - **笑顔強度**: 弱・中・強の3段階 → **α ラダー**(例 `0 1 2 3`、α=0 は再構成)。
+> - **+Pareidolia 介入**: スクラッチ期は計画どおり学習データ追加(hq512 vs pareidolia512)で実施。
+>   現行 SD-VAE は decoder 凍結で追加学習をしないため、介入は **笑顔方向の学習ソース**
+>   (CelebA 人間笑顔 `smile_direction` vs FiT happy−neutral `fit_direction`)として実現。
+> - **評価指標**: LPIPS/SSIM/CLIP の軽量評価を実装([experiments/eval.py](../experiments/eval.py))。
+>   保存軸は機能する一方 **CLIP-smile はほぼノイズで「人間化」を報酬化** → 笑顔軸は人手評価が
+>   必須(§0.1-5 の想定どおり)。
+
 ---
 
 ## 0. プロジェクトの目的と前提整理
@@ -30,11 +49,11 @@
 | 項目 | 設定 |
 |---|---|
 | 笑顔の教師 | CelebA-HQ `Smiling`（事前学習済み重みOK、スクラッチ学習はしない） |
-| 入力・評価ドメイン | 物体データ（2.1で確定） |
+| 入力・評価ドメイン | 物体データ（2.1で確定）→ **[実装]** Faces in Things のパレイドリア crop（Diffusion と同一） |
 | 自然さ参照分布 | Faces in Things の `happy` サブセット |
-| 解像度 | 256×256 で統一 |
-| 笑顔強度 | 弱・中・強の3段階 |
-| 評価セット | 物体画像の共通100枚（全手法・全条件で同一） |
+| 解像度 | 256×256 で統一 → **[実装]** 512×512（Diffusion と統一） |
+| 笑顔強度 | 弱・中・強の3段階 → **[実装]** α ラダー（例 `0 1 2 3`、α=0=再構成） |
+| 評価セット | 物体画像の共通100枚（全手法・全条件で同一）→ **[実装]** まず共通固定 10 ID（[eval_ids.txt](../experiments/eval_ids.txt)） |
 | 乱数シード | 評価サンプルは固定 |
 
 ---
@@ -68,21 +87,37 @@
 ### 2.1 採用データセット（3つの役割）
 | 役割 | データセット | 用途 |
 |---|---|---|
-| ★入力・評価先 | **ImageNet（生物以外）【確定】** WordNet階層で animal/person/plant 配下を除外し、50〜100クラス×各100〜200枚（1〜3万枚、5〜15GB）をキュレーション。全量138GBは不要 | 笑顔を付与し、自然さを評価。学習にも使う |
+| ★入力・評価先 | **ImageNet（生物以外）【当初計画】** WordNet階層で animal/person/plant 配下を除外し、50〜100クラス×各100〜200枚（1〜3万枚、5〜15GB）をキュレーション。全量138GBは不要 | 笑顔を付与し、自然さを評価。学習にも使う |
 | 笑顔の教師 | **CelebA-HQ**（`Smiling`） | 笑顔概念の供給源 |
 | ★自然さ介入＆参照 | **Faces in Things**（arXiv 2409.16143） | +Pareidolia条件の追加学習データ／happyサブセットをFID基準に |
 
 > クラス選定は Faces in Things に出る物の種類（家庭用品・食品・建物・乗り物など）に寄せると比較がきれいになる。
 
+**[実装]** ImageNet 本体のフルキュレーションは行わなかった。実際に使ったのは:
+- **学習用の物体（スクラッチ VAE-GAN 期のみ）**: 代替セットとして Tiny ImageNet 非生物
+  （WordNet 除外ロジックは計画どおり実装、[scripts/download_objects_smoke.py](../scripts/download_objects_smoke.py)）、
+  Imagenette 非生物8クラス（512px 用、[scripts/download_objects_hq.py](../scripts/download_objects_hq.py)）、
+  Fruits-30 単一物体（作例用、[scripts/download_objects_single.py](../scripts/download_objects_single.py)）。
+- **評価入力**: ImageNet 系ではなく **Faces in Things のパレイドリア crop**（Diffusion トラックと
+  同一 crop・同一 10 ID）に変更。現行 SD-VAE 手法は追加学習をしないため、物体学習データ自体が不要。
+
 ### 2.2 前処理・分割
-- 物体画像：物体中心にクロップ → 256×256 正規化（アスペクト比保持＋白パディングでFaces in Thingsと作法を揃える）。
-- 評価用の固定100枚を切り出し、全手法・全条件で共通利用。
-- Faces in Things：emotion属性で `happy` を抽出（自然さ参照＆+Pareidolia学習に）。
+- 物体画像：物体中心にクロップ → 256×256 正規化（アスペクト比保持＋白パディングでFaces in Thingsと作法を揃える）。**[実装]** 白パディング正方形化は実装どおり（`src/smilevae/data.py`）、解像度は 512×512。
+- 評価用の固定100枚を切り出し、全手法・全条件で共通利用。**[実装]** まず共通固定 10 ID（[eval_ids.txt](../experiments/eval_ids.txt)）で運用、100枚化は未実施。
+- Faces in Things：emotion属性で `happy` を抽出（自然さ参照＆+Pareidolia学習に）。**[実装]** 実装済み（[scripts/download_faces_in_things.py](../scripts/download_faces_in_things.py)、happy 1216枚）。
 
 ### 2.3 Baseline / +Pareidolia の作り分け
 - Baseline学習集合 ＝ CelebA(笑顔) ＋ 物体データ。
 - +Pareidolia学習集合 ＝ Baseline ＋ Faces in Things（happy中心）。
 - 2条件で**学習データ以外（解像度・反復数・評価セット）は揃える**。差が介入のみに帰着するように。
+
+**[実装]** スクラッチ VAE-GAN 期は計画どおり学習データ追加で2条件を実施
+（Baseline=hq512 / +Pareidolia=pareidolia512、[検証ログ §4–5](vae_verification_log.md)）。
+現行の SD-VAE 手法は decoder 凍結で追加学習をしないため、介入は
+**笑顔方向ベクトルの学習ソース**の差し替えとして実現:
+Baseline 相当 = CelebA 人間笑顔から算出した `smile_direction`、
++Pareidolia 相当 = FiT の happy−neutral から算出した `fit_direction`
+（編集パイプライン・評価セットは両者で同一）。
 
 ### 2.4 「笑顔をどこに付けるか」
 - 方針A（主軸・全員）：物体全体を happy パレイドリア顔へ寄せる（領域指定なし）。
@@ -107,8 +142,15 @@
 
 ### 3.2 手法別設計（担当 = 各1名）
 - **VAE：** CVAE / VAE-GAN（ぼやけ対策にGAN損失推奨）。笑顔方向ベクトルを潜在で操作。
+  **[実装]** VAE-GAN（Larsen et al. 2016）で笑顔方向操作まで実証したが、スクラッチ学習の
+  decoder が再構成ボケの天井となり [old/](../old/) にアーカイブ。現行は
+  **事前学習 SD-VAE（凍結）の潜在で同じ方向操作**を行う
+  （[experiments/pretrained_ae/](../experiments/pretrained_ae/)）。「笑顔方向ベクトルを潜在で操作」
+  という設計自体は計画どおり。
 - **GAN：** StarGAN v2（neutral↔happyドメイン変換）本命、GANimation（AU強度）を比較軸に。
 - **Diffusion：** DiffAE（潜在編集）＋ SDEdit / InstructPix2Pix（既製ベースライン）。
+  **[実装]** InstructPix2Pix ベースに **FiT の neutral→happy ペアで LoRA を学習**する方式
+  （SD-VAE は凍結。`diffusion/configs/train_lora.yaml`, `diffusion/data/build_pairs_pareidria.py`）。
 
 ### 3.3 アブレーション（全手法共通）
 - 笑顔強度（弱・中・強）。
@@ -129,6 +171,12 @@
 | ③ 物体保存 | 元の物体と分かるか | 編集前後 LPIPS/SSIM |
 | ④ 顔に見えるか | 顔として読めるか | 原論文パレイドリア検出器の信頼度 |
 
+**[実装]** 軽量評価 [experiments/eval.py](../experiments/eval.py)（共通10 ID）まで実装済み:
+- **③物体保存 = LPIPS/SSIM/CLIP画像類似**は計画どおり実装し、綺麗に機能（変種の順位が明確に出る）。
+- **①笑顔度**は分類器/AU の代わりに **CLIP-smile** を試行したが、**ほぼノイズ（±0.01）で
+  「人間化する手法」だけを報酬化**し、物体を保った笑顔を過小評価 → 笑顔軸は人手評価（§4.3）が必須。
+- **②FID/KID・④パレイドリア検出器は未実施**（FID/KID は数百枚必要、現状10枚のため）。
+
 ### 4.2 介入効果の見せ方
 - **Baseline vs +Pareidolia の②自然さ（FID＋人手）の差分**がヘッドライン。手法別に「介入で自然さがどれだけ動いたか」を棒グラフ＋作例で。
 - ①笑顔度↔②自然さ↔③物体保存 はトレードオフ。強度を振った曲線でPareto的に提示。
@@ -147,8 +195,8 @@
 **ゴール：実際に動かし、「どの手法がどれだけ自然に笑顔を付けられたか」「パレイドリア学習で自然さが上がったか」を発表スライドにまとめるまで。**
 
 ### 5.0 4週間で間に合わせる鉄則
-- **スクラッチ学習をしない。** CelebA-HQ事前学習済みを起点に、適用・微調整だけ。
-- **評価は物体100枚に固定。**
+- **スクラッチ学習をしない。** CelebA-HQ事前学習済みを起点に、適用・微調整だけ。（**[実装]** VAE トラックは当初この鉄則に反してスクラッチ学習し、ボケの天井に当たった。事前学習 SD-VAE への載せ替えで解消——鉄則の正しさを裏づける結果に。）
+- **評価は物体100枚に固定。**（**[実装]** まず共通固定 10 ID で軽量評価から。）
 - **方針A（全体編集）を主軸**、方針Bは余力時。
 - **2条件は学習データ違いのみ。** パイプラインを使い回し、+Pareidolia は追加データを足すだけにする。
 - 物体データのキュレーション・共通前処理・評価スクリプトは**第1週で1本化**。
