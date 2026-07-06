@@ -1,0 +1,35 @@
+# Baseline condition (plan §2.3): CelebA-HQ smile/neutral + curated objects.
+# No pareidolia data. 256px to match the common evaluation setting (§0.3).
+# lambda_perc adds VGG perceptual loss to sharpen reconstruction quality.
+# amp=true required for 8GB VRAM at 256px with batch_size=8.
+# NOTE: data paths assume download_celeba.py --source celeba-hq --out data/raw/celeba_hq
+resolution: 256
+z_channels: 512
+latent_size: 16
+base_channels: 64
+max_channels: 512
+n_res: 6
+style_dim: 128
+batch_size: 8
+lr_g: 2.0e-4
+lr_d: 1.0e-4
+lambda_cls: 1.0
+lambda_rec: 10.0
+lambda_cyc: 10.0
+lambda_perc: 0.5
+amp: true
+steps: 60000
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+smile_dirs:
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+neutral_dirs:
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+object_dirs:
+  # data/processed/objects は共通キュレーション済みセット（未作成時は下記で代用）
+  # HQ代替: uv run scripts/download_objects_hq.py --out data/raw/objects_hq --max-side 600
+  - data/raw/objects_smoke
+out_dir: outputs/baseline256_gan

@@ -1,0 +1,23 @@
+# Smoke test (plan week 1): 64px, small data.
+# Gender-split CelebA dirs match what download_celeba.py --source celeba produces,
+# so the smile direction can be averaged over male/female pairs (same as VAE track).
+# z_channels=64 at latent_size=8 → 8x8x64 spatial latent, parallel to smoke64_v3 in VAE.
+resolution: 64
+z_channels: 64
+latent_size: 8
+base_channels: 96
+max_channels: 512
+n_res: 4
+style_dim: 64
+batch_size: 32
+steps: 20000
+sample_every: 1000
+smile_dirs:
+  - data/raw/celeba/smile_male
+  - data/raw/celeba/smile_female
+neutral_dirs:
+  - data/raw/celeba/neutral_male
+  - data/raw/celeba/neutral_female
+object_dirs:
+  - data/raw/objects_smoke
+out_dir: outputs/smoke64_gan

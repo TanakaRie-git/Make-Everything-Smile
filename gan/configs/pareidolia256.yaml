@@ -1,0 +1,51 @@
+# +Pareidolia condition (plan §2.3): CelebAMask-HQ + FacesInThings crops.
+#
+# FacesInThings crops は smile_dirs / neutral_dirs に追加し is_face=True として扱う。
+# → D の smile regression loss がパレイドリア顔にも掛かり、
+#   G が neutral <-> happy の双方向変換をパレイドリア画像で学習できる。
+# （旧設計: FiT を object_dirs に入れ happy のみ 4x over-sample していたが、
+#   感情ラベルを使えず neutral->happy の方向が学習されなかった。）
+#
+# データ準備:
+#   uv run scripts/download_celeba.py --source celeba-hq \
+#       --n-per-class 5000 --out data/raw/celeba_hq
+#   uv run scripts/download_faces_in_things.py --out data/raw/faces_in_things
+#   uv run scripts/prepare_facesinthings.py \
+#       --fit_dir data/raw/faces_in_things/FacesInThings \
+#       --out_dir data/raw/faces_in_things/crops --split train
+#
+# 実行:
+#   uv run python -m smilegan.train configs/pareidolia256.yaml
+resolution: 256
+z_channels: 512
+latent_size: 16
+base_channels: 64
+max_channels: 512
+n_res: 6
+style_dim: 128
+batch_size: 8
+lr_g: 1.0e-4
+lr_d: 5.0e-5
+lambda_cls: 1.0
+lambda_rec: 10.0
+lambda_cyc: 10.0
+lambda_perc: 0.5
+amp: true
+init_from: outputs/baseline256_gan/ckpt/last.pt
+steps: 15000
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+smile_dirs:
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+  - data/raw/faces_in_things/crops/happy
+neutral_dirs:
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+  - data/raw/faces_in_things/crops/neutral
+object_dirs:
+  # data/processed/objects は共通キュレーション済みセット（未作成時は下記で代用）
+  # HQ代替: uv run scripts/download_objects_hq.py --out data/raw/objects_hq --max-side 600
+  - data/raw/objects_smoke
+out_dir: outputs/pareidolia256_gan

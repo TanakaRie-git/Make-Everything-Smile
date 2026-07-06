@@ -1,0 +1,36 @@
+# Pareidolia smoke test (64px, 5000 steps).
+# FacesInThings crops を labeled face data として投入するパイプラインの疎通確認。
+#
+# データ準備（初回のみ）:
+#   uv run scripts/download_faces_in_things.py --out data/raw/faces_in_things
+#   uv run scripts/prepare_facesinthings.py \
+#       --fit_dir data/raw/faces_in_things/FacesInThings \
+#       --out_dir data/raw/faces_in_things/crops --split train
+#   uv run scripts/download_celeba.py --source celeba \
+#       --n-per-class 500 --out data/raw/celeba
+#
+# 実行:
+#   uv run python -m smilegan.train configs/smoke_pareidolia.yaml
+resolution: 64
+z_channels: 64
+latent_size: 8
+base_channels: 96
+max_channels: 512
+n_res: 4
+style_dim: 64
+batch_size: 32
+steps: 5000
+sample_every: 1000
+ckpt_every: 2500
+log_every: 100
+smile_dirs:
+  - data/raw/celeba/smile_male
+  - data/raw/celeba/smile_female
+  - data/raw/faces_in_things/crops/happy
+neutral_dirs:
+  - data/raw/celeba/neutral_male
+  - data/raw/celeba/neutral_female
+  - data/raw/faces_in_things/crops/neutral
+object_dirs:
+  - data/raw/objects_smoke
+out_dir: outputs/smoke_pareidolia_gan

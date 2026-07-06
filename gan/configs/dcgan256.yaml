@@ -1,0 +1,23 @@
+# DCGAN smile transfer — CelebA-HQ 256px
+# G(neutral) → smile, trained with adversarial + identity reconstruction.
+# No conditioning scalar, no cycle loss, no smile regression on D.
+# Verification: does smile learned on real faces transfer to pareidolia?
+resolution: 256
+base_channels: 64
+max_channels: 512
+batch_size: 8
+lr_g: 2.0e-4
+lr_d: 1.0e-4
+lambda_rec: 10.0
+amp: true
+steps: 60000
+sample_every: 1000
+ckpt_every: 2000
+log_every: 50
+smile_dirs:
+  - data/raw/celeba_hq/smile_male
+  - data/raw/celeba_hq/smile_female
+neutral_dirs:
+  - data/raw/celeba_hq/neutral_male
+  - data/raw/celeba_hq/neutral_female
+out_dir: outputs/dcgan256
