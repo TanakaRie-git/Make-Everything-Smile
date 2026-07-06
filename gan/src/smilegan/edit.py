@@ -72,7 +72,9 @@ def make_sheet(rows: list[tuple[str, list[Image.Image]]], col_names: list[str]) 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--ckpt", required=True)
-    parser.add_argument("--input-dir", required=True)
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument("--input-dir", help="directory of images")
+    group.add_argument("--input-file", help="single image file")
     parser.add_argument("--out-dir", required=True)
     parser.add_argument("--mode", choices=["conditional", "latent"], default="conditional")
     parser.add_argument("--direction",
@@ -85,6 +87,8 @@ def main() -> None:
     parser.add_argument("--upscale", type=int, default=None,
                         help="nearest-neighbour tile upscale (default: 3 below 256px, else 1)")
     parser.add_argument("--name", default="contact_sheet")
+    parser.add_argument("--single-strength", type=float, default=None,
+                        help="if set, save only G(x, s) at this strength as a plain image")
     args = parser.parse_args()
 
     if args.mode == "latent" and args.direction is None:
@@ -109,8 +113,15 @@ def main() -> None:
     if args.upscale is None:
         args.upscale = 3 if cfg["resolution"] < 256 else 1
 
-    ds = FlatImageDataset([args.input_dir], cfg["resolution"], train=False)
-    n = min(len(ds), args.limit) if args.limit else len(ds)
+    from .data import build_transform
+    tf = build_transform(cfg["resolution"], train=False)
+
+    if args.input_file:
+        paths = [Path(args.input_file)]
+    else:
+        ds = FlatImageDataset([args.input_dir], cfg["resolution"], train=False)
+        paths = ds.paths[:args.limit] if args.limit else ds.paths
+
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -119,8 +130,15 @@ def main() -> None:
         for nm, a in zip(STRENGTH_NAMES, args.strengths)
     ]
     rows = []
-    for i in range(n):
-        x = ds[i].unsqueeze(0).to(device)
+    for p in paths:
+        x = tf(Image.open(p)).unsqueeze(0).to(device)
+        if args.single_strength is not None:
+            s = x.new_full((1,), args.single_strength)
+            out = G(x, s)[0]
+            out_path = out_dir / f"{args.name}.png"
+            to_pil(out, args.upscale).save(out_path)
+            print(f"saved -> {out_path} (s={args.single_strength})")
+            return
         if args.mode == "conditional":
             # recon = G(x, 0.0) to verify reconstruction quality
             recon = G(x, x.new_zeros(1))
@@ -136,12 +154,18 @@ def main() -> None:
             for alpha in args.strengths:
                 z_edited = z + alpha * scale * direction.unsqueeze(0)
                 outputs.append(G.decode_raw(z_edited)[0])
-        rows.append((ds.paths[i].stem, [to_pil(t, args.upscale) for t in outputs]))
+        rows.append((p.stem, [to_pil(t, args.upscale) for t in outputs]))
 
     sheet = make_sheet(rows, col_names)
     out_path = out_dir / f"{args.name}.png"
     sheet.save(out_path)
-    print(f"saved {n} rows -> {out_path} (columns: {' | '.join(col_names)})")
+    print(f"saved {len(rows)} rows -> {out_path} (columns: {' | '.join(col_names)})")
+
+    smiles_dir = out_dir / "smiles"
+    smiles_dir.mkdir(exist_ok=True)
+    for stem, tiles in rows:
+        tiles[-1].save(smiles_dir / f"{stem}_smile.png")
+    print(f"saved individual smile images -> {smiles_dir}/")
 
 
 if __name__ == "__main__":
