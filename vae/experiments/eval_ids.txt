@@ -1,0 +1,13 @@
+# Diffusion トラックと共通の評価 ID(FacesInThings crop)。
+# diffusion/outputs の compare 出力 ID と crop キャッシュの積集合。
+# 形式: <id> <source_emotion>
+000000102 neutral
+000004308 neutral
+000007868 neutral
+000015457 happy
+000018844 neutral
+000020510 happy
+000021518 neutral
+000021539 neutral
+000021730 neutral
+000025426 neutral

@@ -1,0 +1,18 @@
+# Smoke test (plan week 1): 64px, small data.
+# v3: spatial latent (8x8x64) — the global-vector latent of v2 collapsed
+# object identity toward the face manifold. Gender-split CelebA folders so the
+# smile direction can be averaged over male/female pairs.
+resolution: 64
+z_dim: 64          # channels of the spatial latent map
+latent_size: 8
+base_channels: 96
+batch_size: 64
+steps: 20000
+sample_every: 1000
+data_dirs:
+  - data/raw/celeba/smile_male
+  - data/raw/celeba/smile_female
+  - data/raw/celeba/neutral_male
+  - data/raw/celeba/neutral_female
+  - data/raw/objects_smoke
+out_dir: outputs/smoke64_v3

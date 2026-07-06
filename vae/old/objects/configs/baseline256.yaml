@@ -1,0 +1,13 @@
+# Baseline condition (plan §2.3): CelebA-HQ smile/neutral + curated objects.
+# No pareidolia data. 256px to match the common evaluation setting (§0.3).
+# NOTE: data paths assume the shared data/ layout at the repo root; the object
+# set is the team-curated ImageNet subset (not yet available).
+resolution: 256
+z_dim: 512
+batch_size: 16          # 8GB VRAM
+steps: 60000
+data_dirs:
+  - data/raw/celeba_hq/smile
+  - data/raw/celeba_hq/neutral
+  - data/processed/objects
+out_dir: outputs/baseline256

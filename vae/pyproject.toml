@@ -1,0 +1,37 @@
+[project]
+name = "smile-vae"
+version = "0.1.0"
+description = "VAE-GAN smile transfer onto plain objects (Make-Everything-Smile, VAE track)"
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.6",
+    "torchvision>=0.21",
+    "numpy>=2.0",
+    "pillow>=10.0",
+    "tqdm>=4.66",
+    "huggingface-hub>=0.30",
+    "datasets>=3.0",
+    "pyyaml>=6.0",
+    "nltk>=3.9.4",
+    "diffusers>=0.38.0",
+    "safetensors>=0.8.0",
+    "lpips>=0.1.4",
+    "torchmetrics>=1.9.0",
+    "open-clip-torch>=3.3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/smilevae"]
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[tool.uv.sources]
+torch = [{ index = "pytorch-cu124" }]
+torchvision = [{ index = "pytorch-cu124" }]
